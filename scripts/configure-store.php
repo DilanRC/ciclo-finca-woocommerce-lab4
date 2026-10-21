@@ -1,6 +1,6 @@
 <?php
 /**
- * Configure local WooCommerce settings for the EIF4280 lab.
+ * Configure local WooCommerce settings for Ciclo Finca.
  * Run after installing and activating WooCommerce:
  * wp eval-file /lab/configure-store.php
  */
@@ -37,25 +37,30 @@ $bacs = get_option('woocommerce_bacs_settings', []);
 $bacs = is_array($bacs) ? $bacs : [];
 $bacs = array_merge($bacs, [
     'enabled' => 'yes',
-    'title' => 'Pago manual de prueba',
-    'description' => 'Simulación académica. No se realiza ningún cobro ni transferencia.',
-    'instructions' => 'Pedido de laboratorio: no realice pagos ni comparta datos bancarios.',
+    'title' => 'Pago manual',
+    'description' => 'Este sitio no procesa pagos en línea ni solicita datos financieros. El pedido queda pendiente.',
+    'instructions' => 'No realices transferencias ni compartas datos de tarjeta desde este sitio. El pedido queda pendiente.',
     'account_details' => [],
 ]);
 update_option('woocommerce_bacs_settings', $bacs);
 
-foreach (['cod', 'cheque'] as $gateway) {
-    $optionName = 'woocommerce_' . $gateway . '_settings';
+foreach (WC()->payment_gateways()->payment_gateways() as $gateway) {
+    if ($gateway->id === 'bacs') {
+        continue;
+    }
+
+    $optionName = 'woocommerce_' . $gateway->id . '_settings';
     $settings = get_option($optionName, []);
     $settings = is_array($settings) ? $settings : [];
     $settings['enabled'] = 'no';
     update_option($optionName, $settings);
 }
 
-$targetZoneName = 'EIF4280 — Costa Rica (recogida local)';
+$targetZoneName = 'Costa Rica — Recogida local';
+$legacyZoneNames = ['EIF4280 — Costa Rica (recogida local)'];
 $zone = null;
 foreach (WC_Shipping_Zones::get_zones() as $zoneData) {
-    if (($zoneData['zone_name'] ?? '') === $targetZoneName) {
+    if (($zoneData['zone_name'] ?? '') === $targetZoneName || in_array(($zoneData['zone_name'] ?? ''), $legacyZoneNames, true)) {
         $zone = new WC_Shipping_Zone((int) $zoneData['zone_id']);
         break;
     }
@@ -96,12 +101,18 @@ if ($pickupInstanceId < 1) {
     throw new RuntimeException('WooCommerce could not create the free local-pickup method.');
 }
 
+foreach ($zone->get_shipping_methods() as $method) {
+    if ($method->id !== 'local_pickup') {
+        $zone->delete_shipping_method((int) $method->instance_id);
+    }
+}
+
 $pickupOption = 'woocommerce_local_pickup_' . $pickupInstanceId . '_settings';
 $pickupSettings = get_option($pickupOption, []);
 $pickupSettings = is_array($pickupSettings) ? $pickupSettings : [];
 $pickupSettings = array_merge($pickupSettings, [
     'enabled' => 'yes',
-    'title' => 'Recogida local gratuita (simulada)',
+    'title' => 'Recogida local',
     'tax_status' => 'none',
     'cost' => '0',
 ]);
@@ -109,10 +120,10 @@ update_option($pickupOption, $pickupSettings);
 
 $defaultZone = new WC_Shipping_Zone(0);
 foreach ($defaultZone->get_shipping_methods() as $method) {
-    if ($method->id === 'local_pickup' && $method->title === 'Recogida local gratuita (simulada)') {
+    if ($method->id === 'local_pickup' && $method->title !== 'Recogida local') {
         $defaultZone->delete_shipping_method((int) $method->instance_id);
         delete_option('woocommerce_local_pickup_' . (int) $method->instance_id . '_settings');
     }
 }
 
-WP_CLI::success('Tienda configurada para Costa Rica/CRC, pago manual de prueba y recogida gratuita.');
+WP_CLI::success('Tienda configurada para Costa Rica/CRC, pago manual y recogida local.');

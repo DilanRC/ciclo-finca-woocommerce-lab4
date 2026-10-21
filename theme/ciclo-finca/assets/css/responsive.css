@@ -1,0 +1,440 @@
+@media (max-width: 86rem) {
+  .ciclo-header-wrap > .ciclo-header {
+    grid-template-columns: auto auto minmax(0, 1fr);
+    grid-template-areas:
+      "brand toggle actions"
+      "nav nav nav";
+    gap: 0.25rem 1rem;
+    padding-block: 0.55rem;
+  }
+
+  .ciclo-menu-toggle {
+    display: inline-flex;
+    min-height: 48px;
+    grid-area: toggle;
+    align-items: center;
+    justify-content: center;
+    gap: 0.55rem;
+    border: 1px solid color-mix(in srgb, var(--ciclo-white) 33%, transparent);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--ciclo-white);
+    cursor: pointer;
+    font-size: 0.88rem;
+    font-weight: 700;
+    padding: 0.55rem 0.85rem;
+  }
+
+  .ciclo-menu-toggle[aria-expanded="true"] {
+    border-color: var(--ciclo-lime);
+    color: var(--ciclo-lime);
+  }
+
+  .ciclo-primary-nav {
+    position: absolute;
+    z-index: 10;
+    top: calc(100% + 4px);
+    right: 0;
+    left: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 0.45rem;
+    border-bottom: 3px solid var(--ciclo-lime);
+    background: var(--ciclo-forest-deep);
+    box-shadow: 0 18px 32px -24px var(--ciclo-forest-deep);
+    padding: 1rem var(--ciclo-gutter);
+  }
+
+  .ciclo-primary-nav[hidden] {
+    display: none;
+  }
+
+  body.ciclo-menu-ready .ciclo-primary-nav:not(.is-open) {
+    display: none;
+  }
+
+  .ciclo-header-search {
+    display: none;
+  }
+
+  .ciclo-header-actions {
+    margin-right: 0;
+  }
+}
+
+@media (max-width: 62rem) {
+  .ciclo-category-list ul.products,
+  .ciclo-products ul.products,
+  .woocommerce ul.products,
+  .woocommerce-page ul.products {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .woocommerce div.product {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.5rem;
+  }
+
+  .woocommerce div.product .woocommerce-product-gallery {
+    max-width: 680px;
+  }
+
+  .ciclo-route-banner {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.7fr);
+  }
+
+  .wp-block-woocommerce-product-template.wc-block-product-template {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width: 42rem) {
+  .ciclo-header-wrap > .ciclo-header {
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+      "brand actions"
+      "toggle toggle"
+      "nav nav";
+    gap: 0.4rem 0.2rem;
+    padding-block: 0.55rem 0.75rem;
+  }
+
+  .wp-block-site-title {
+    gap: 0.48rem;
+  }
+
+  .wp-block-site-title::before {
+    width: 2.25rem;
+    height: 2.25rem;
+  }
+
+  .wp-block-site-title a {
+    font-size: 1.15rem;
+  }
+
+  .ciclo-header-actions {
+    gap: 0.15rem;
+  }
+
+  .ciclo-header-account,
+  .ciclo-header-cart {
+    min-height: 48px;
+    gap: 0.3rem;
+    padding: 0.45rem;
+    font-size: 0.76rem;
+  }
+
+  .ciclo-header-action__icon {
+    width: 1.05rem;
+    height: 1.05rem;
+  }
+
+  .ciclo-header-cart__count {
+    min-width: 1.2rem;
+    height: 1.2rem;
+    font-size: 0.68rem;
+  }
+
+  .ciclo-menu-toggle {
+    justify-content: flex-start;
+    width: 100%;
+  }
+
+  .ciclo-primary-nav {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.35rem;
+  }
+
+  .ciclo-nav-link {
+    justify-content: flex-start;
+  }
+
+  .ciclo-hero {
+    min-height: 680px;
+    align-items: end;
+  }
+
+  .ciclo-hero__image {
+    object-position: 74% center;
+  }
+
+  .ciclo-hero__overlay {
+    background:
+      linear-gradient(0deg,
+        color-mix(in srgb, var(--ciclo-forest-deep) 96%, transparent) 0%,
+        color-mix(in srgb, var(--ciclo-forest-deep) 82%, transparent) 46%,
+        color-mix(in srgb, var(--ciclo-forest-deep) 32%, transparent) 100%);
+  }
+
+  .ciclo-hero__content {
+    width: 100%;
+    padding: 2.5rem var(--ciclo-gutter) 3rem;
+  }
+
+  .ciclo-hero h1 {
+    max-width: 12ch;
+    font-size: clamp(3.35rem, 14vw, 4.2rem);
+  }
+
+  .ciclo-hero__intro {
+    max-width: 39ch;
+    margin-block: 1.15rem 1.35rem;
+    font-size: 0.98rem;
+  }
+
+  .ciclo-hero__actions a {
+    min-height: 50px;
+    padding-inline: 1.05rem;
+    font-size: 0.85rem;
+  }
+
+  .ciclo-trust-strip {
+    grid-template-columns: 1fr;
+    margin-block: 0.8rem 3.5rem;
+  }
+
+  .ciclo-trust-strip > div {
+    min-height: 72px;
+    padding: 0.75rem 1rem;
+  }
+
+  .ciclo-section__heading {
+    display: block;
+  }
+
+  .ciclo-section__heading h2 {
+    max-width: 12ch;
+    font-size: clamp(2.75rem, 12vw, 4rem);
+  }
+
+  .ciclo-section__heading p {
+    margin-top: 0.7rem;
+    font-size: 0.93rem;
+  }
+
+  .ciclo-category-list ul.products,
+  .ciclo-products ul.products,
+  .woocommerce ul.products,
+  .woocommerce-page ul.products {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.65rem;
+  }
+
+  .ciclo-category-list ul.products li.product-category,
+  .ciclo-products ul.products li.product,
+  .woocommerce ul.products li.product,
+  .woocommerce-page ul.products li.product {
+    border-radius: 0.8rem;
+    padding: 0.45rem 0.45rem 0.7rem;
+  }
+
+  .ciclo-category-list ul.products li.product-category img {
+    aspect-ratio: 1 / 1;
+    margin-bottom: 0.6rem;
+  }
+
+  .ciclo-category-list ul.products li.product-category h2 {
+    margin-inline: 0.6rem;
+    font-size: 1.1rem;
+  }
+
+  .ciclo-category-list ul.products li.product-category h2::after {
+    width: 1.55rem;
+    height: 1.55rem;
+    font-size: 0.82rem;
+  }
+
+  .ciclo-category-list ul.products li.product-category h2 mark {
+    font-size: 0.65rem;
+  }
+
+  .ciclo-products ul.products li.product .woocommerce-loop-product__title,
+  .woocommerce ul.products li.product .woocommerce-loop-product__title {
+    min-height: 2.8em;
+    margin-inline: 0.2rem;
+    font-size: 0.85rem;
+  }
+
+  .ciclo-products ul.products li.product .price,
+  .woocommerce ul.products li.product .price {
+    margin-inline: 0.2rem;
+    font-size: 0.91rem;
+  }
+
+  .ciclo-products ul.products li.product .ciclo-product-summary {
+    min-height: 4.2em;
+    margin-inline: 0.2rem;
+    font-size: 0.76rem;
+  }
+
+  .ciclo-products ul.products li.product .button,
+  .woocommerce ul.products li.product .button {
+    width: calc(100% - 0.4rem);
+    min-height: 48px;
+    margin-inline: 0.2rem;
+    padding-inline: 0.4rem;
+    font-size: 0.72rem;
+  }
+
+  .ciclo-route-banner {
+    grid-template-columns: 1fr;
+    margin-block: 3.5rem;
+  }
+
+  .ciclo-route-banner__copy {
+    padding: 1.7rem 1.35rem 1.2rem;
+  }
+
+  .ciclo-route-banner h2 {
+    font-size: clamp(3rem, 13vw, 4.4rem);
+  }
+
+  .ciclo-route-banner p:not(.ciclo-eyebrow) {
+    font-size: 0.92rem;
+  }
+
+  .ciclo-route-banner__visual {
+    min-height: 210px;
+    max-height: 240px;
+  }
+
+  .ciclo-route-banner__visual img {
+    max-height: 230px;
+  }
+
+  .ciclo-route-banner__visual::after {
+    background: linear-gradient(0deg, var(--ciclo-forest) 0%, transparent 42%);
+  }
+
+  .ciclo-how {
+    grid-template-columns: 1fr;
+    gap: 0.7rem;
+    margin-block: 3.5rem;
+  }
+
+  .ciclo-how article {
+    min-height: 0;
+    padding: 1.25rem;
+  }
+
+  .ciclo-how h3 {
+    margin-top: 0.8rem;
+    font-size: 1.55rem;
+  }
+
+  .ciclo-how p {
+    font-size: 0.9rem;
+  }
+
+  .ciclo-editorial {
+    padding-block: 1.75rem 2.5rem;
+  }
+
+  .ciclo-editorial h1 {
+    font-size: clamp(3.25rem, 15vw, 5rem);
+  }
+
+  .ciclo-editorial h2 {
+    margin-top: 1.8rem;
+    font-size: 2.2rem;
+  }
+
+  .ciclo-editorial p,
+  .ciclo-editorial li {
+    font-size: 0.96rem;
+  }
+
+  .woocommerce-shop .wp-block-post-title,
+  .tax-product_cat .wp-block-post-title {
+    margin-top: 1.4rem;
+    font-size: 3.8rem;
+  }
+
+  .woocommerce div.product {
+    margin-block: 1.3rem 3rem;
+  }
+
+  .woocommerce div.product .product_title {
+    font-size: 3.5rem;
+  }
+
+  .woocommerce table.shop_table th,
+  .woocommerce table.shop_table td {
+    padding: 0.55rem;
+    font-size: 0.84rem;
+  }
+
+  .woocommerce-cart table.cart td.actions .coupon {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .woocommerce-cart table.cart td.actions .coupon .input-text {
+    float: none;
+    width: 0;
+    min-width: 0;
+    flex: 1 1 0;
+    margin: 0;
+  }
+
+  .woocommerce-cart table.cart td.actions .coupon button[name="apply_coupon"] {
+    height: 50px;
+    min-height: 50px;
+    width: 0;
+    min-width: 0;
+    flex: 1 1 0;
+    padding-inline: 0.45rem;
+    font-size: 0.78rem;
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  .ciclo-footer__main,
+  .ciclo-footer__bottom {
+    flex-direction: column;
+  }
+
+  .ciclo-footer__main {
+    gap: 1.4rem;
+  }
+
+  .ciclo-footer__main nav {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.35rem 1rem;
+  }
+}
+
+@media (max-width: 22rem) {
+  .ciclo-header-account,
+  .ciclo-header-cart {
+    gap: 0.2rem;
+    padding-inline: 0.3rem;
+    font-size: 0.69rem;
+  }
+
+  .ciclo-category-list ul.products,
+  .ciclo-products ul.products,
+  .woocommerce ul.products,
+  .woocommerce-page ul.products,
+  .wp-block-woocommerce-product-template.wc-block-product-template {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}

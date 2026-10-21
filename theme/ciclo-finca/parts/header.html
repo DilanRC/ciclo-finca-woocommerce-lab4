@@ -1,15 +1,17 @@
-<!-- wp:group {"align":"full","className":"ciclo-header-wrap","layout":{"type":"constrained"}} -->
+<!-- wp:group {"align":"full","className":"ciclo-header-wrap","layout":{"type":"default"}} -->
 <div class="wp-block-group alignfull ciclo-header-wrap">
-	<!-- wp:group {"align":"wide","className":"ciclo-header","style":{"spacing":{"padding":{"top":"20px","bottom":"20px"}}},"layout":{"type":"flex","flexWrap":"wrap","justifyContent":"space-between","verticalAlignment":"center"}} -->
-	<div class="wp-block-group alignwide ciclo-header" style="padding-top:20px;padding-bottom:20px">
+	<!-- wp:group {"className":"ciclo-header","layout":{"type":"default"}} -->
+	<div class="wp-block-group ciclo-header">
 		<!-- wp:site-title {"level":0} /-->
-		<!-- wp:navigation {"overlayMenu":"mobile","overlayBackgroundColor":"forest","overlayTextColor":"base","layout":{"type":"flex","justifyContent":"right","flexWrap":"wrap"}} -->
-			<!-- wp:navigation-link {"label":"Inicio","url":"/"} /-->
-			<!-- wp:navigation-link {"label":"Tienda","url":"/shop/"} /-->
-			<!-- wp:navigation-link {"label":"Bicicletas","url":"/product-category/bicicletas/"} /-->
-			<!-- wp:navigation-link {"label":"Accesorios","url":"/product-category/accesorios/"} /-->
-			<!-- wp:navigation-link {"label":"Carrito","url":"/cart/"} /-->
-		<!-- /wp:navigation -->
+		<!-- wp:shortcode -->[ciclo_primary_navigation]<!-- /wp:shortcode -->
+		<!-- wp:shortcode -->[ciclo_header_search]<!-- /wp:shortcode -->
+		<!-- wp:shortcode -->[ciclo_header_actions]<!-- /wp:shortcode -->
+		<!-- wp:html -->
+		<button class="ciclo-menu-toggle" type="button" aria-expanded="false" aria-controls="ciclo-primary-nav">
+			<span class="ciclo-menu-toggle__icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+			<span>Menú</span>
+		</button>
+		<!-- /wp:html -->
 	</div>
 	<!-- /wp:group -->
 </div>

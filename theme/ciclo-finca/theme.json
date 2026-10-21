@@ -4,48 +4,64 @@
   "settings": {
     "layout": {
       "contentSize": "760px",
-      "wideSize": "1200px"
+      "wideSize": "1440px"
     },
     "color": {
       "palette": [
-        { "slug": "forest", "name": "Bosque", "color": "#183b31" },
-        { "slug": "leaf", "name": "Hoja", "color": "#426f50" },
-        { "slug": "lime", "name": "Lima suave", "color": "#d8e77d" },
-        { "slug": "cream", "name": "Crema", "color": "#f7f7f2" },
-        { "slug": "ink", "name": "Tinta", "color": "#202c25" }
+        { "slug": "forest", "name": "Bosque", "color": "#16352c" },
+        { "slug": "forest-deep", "name": "Bosque profundo", "color": "#0e261f" },
+        { "slug": "pine", "name": "Pino", "color": "#285a43" },
+        { "slug": "lime", "name": "Lima", "color": "#d8f05a" },
+        { "slug": "route-orange", "name": "Naranja de ruta", "color": "#e65a32" },
+        { "slug": "chalk", "name": "Tiza", "color": "#f4f5ef" },
+        { "slug": "ink", "name": "Tinta", "color": "#18231e" }
       ]
     },
     "typography": {
       "fontFamilies": [
         {
-          "fontFamily": "\"Avenir Next\", Avenir, \"Segoe UI\", sans-serif",
-          "name": "Ciclo Finca Sans",
-          "slug": "ciclo-sans"
+          "fontFamily": "\"DM Sans\", sans-serif",
+          "name": "DM Sans",
+          "slug": "dm-sans"
+        },
+        {
+          "fontFamily": "\"Barlow Condensed\", sans-serif",
+          "name": "Barlow Condensed",
+          "slug": "barlow-condensed"
         }
       ]
     }
   },
   "styles": {
     "color": {
-      "background": "#f7f7f2",
-      "text": "#202c25"
+      "background": "#f4f5ef",
+      "text": "#18231e"
     },
     "typography": {
-      "fontFamily": "var(--wp--preset--font-family--ciclo-sans)"
+      "fontFamily": "var(--wp--preset--font-family--dm-sans)"
     },
     "elements": {
+      "heading": {
+        "typography": {
+          "fontFamily": "var(--wp--preset--font-family--barlow-condensed)",
+          "fontWeight": "700"
+        },
+        "color": {
+          "text": "#16352c"
+        }
+      },
       "button": {
         "border": {
           "radius": "999px"
         },
         "color": {
-          "background": "#183b31",
+          "background": "#16352c",
           "text": "#ffffff"
         }
       },
       "link": {
         "color": {
-          "text": "#426f50"
+          "text": "#285a43"
         }
       }
     }

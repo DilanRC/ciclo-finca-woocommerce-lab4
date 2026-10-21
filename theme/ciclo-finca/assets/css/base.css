@@ -1,0 +1,116 @@
+@font-face {
+  font-family: "DM Sans";
+  src: url("../fonts/dm-sans-variable.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Barlow Condensed";
+  src: url("../fonts/barlow-condensed-bold.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+:root {
+  --ciclo-forest: #16352c;
+  --ciclo-forest-deep: #0e261f;
+  --ciclo-pine: #285a43;
+  --ciclo-lime: #d8f05a;
+  --ciclo-route-orange: #e65a32;
+  --ciclo-chalk: #f4f5ef;
+  --ciclo-paper: #fff;
+  --ciclo-ink: #18231e;
+  --ciclo-muted: #56645c;
+  --ciclo-line: #dde3da;
+  --ciclo-white: #f7f9f4;
+  --ciclo-gutter: clamp(1.15rem, 4vw, 3.6rem);
+  --ciclo-content: 1380px;
+  --ciclo-ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ciclo-ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ciclo-fast: 150ms;
+  --ciclo-base: 210ms;
+  --ciclo-card-shadow: 0 18px 40px -28px color-mix(in srgb, var(--ciclo-forest) 48%, transparent);
+  --ciclo-card-shadow-hover: 0 26px 48px -30px color-mix(in srgb, var(--ciclo-forest) 62%, transparent);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-x: clip;
+  background: var(--ciclo-chalk);
+  color: var(--ciclo-ink);
+  font-family: "DM Sans", sans-serif;
+  font-size: 1rem;
+  line-height: 1.55;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+body,
+button,
+input,
+select,
+textarea {
+  font-family: "DM Sans", sans-serif;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: var(--ciclo-pine);
+  text-underline-offset: 0.2em;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+.wp-block-button__link:focus-visible,
+.woocommerce a.button:focus-visible,
+.woocommerce button.button:focus-visible,
+.woocommerce input.button:focus-visible {
+  outline: 3px solid var(--ciclo-route-orange);
+  outline-offset: 3px;
+}
+
+.screen-reader-text {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.wp-site-blocks {
+  min-height: 100vh;
+}
+
+.wp-site-blocks > main {
+  margin-block-start: 0 !important;
+}
+
+.wp-site-blocks > header {
+  position: relative;
+  z-index: 50;
+  width: 100%;
+  margin: 0;
+  border-bottom: 4px solid var(--ciclo-lime);
+  background: var(--ciclo-forest);
+}

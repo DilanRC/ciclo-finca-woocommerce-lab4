@@ -1,6 +1,6 @@
 <?php
 /**
- * Seed twelve simple demo products and their images in the isolated lab store.
+ * Seed twelve simple products and their images in the isolated local store.
  * Run after configure-store.php:
  * wp eval-file /lab/seed-products.php
  */
@@ -14,133 +14,148 @@ if (! in_array($host, ['localhost', '127.0.0.1'], true)) {
 }
 
 $categories = [
-    'bicicletas' => ['Bicicletas', 'Modelos de montaña y gravel de muestra para explorar precios, fichas de producto y existencias. Cada artículo de esta categoría es ilustrativo y sirve para practicar el flujo de compra.'],
-    'accesorios' => ['Accesorios', 'Sillines, protección, hidratación y herramientas forman esta selección de accesorios de demostración. Combina artículos y revisa cómo cambian las cantidades del carrito.'],
-    'nutricion' => ['Nutrición', 'Una selección ilustrativa para representar la categoría de nutrición e hidratación. Las fichas sirven para probar cantidades, disponibilidad y totales.'],
-    'ropa' => ['Ropa', 'Prendas de muestra para completar el catálogo de ciclismo. No se publican tallas ni disponibilidad comercial; la información se usa en el laboratorio.'],
+    'bicicletas' => ['Bicicletas', 'Bicicletas de montaña y gravel para quienes disfrutan explorar caminos nuevos.'],
+    'accesorios' => ['Accesorios', 'Sillines, protección, hidratación, herramientas y equipo para acompañarte en cada salida.'],
+    'nutricion' => ['Nutrición', 'Bebidas y esenciales para llevar contigo durante tus recorridos.'],
+    'ropa' => ['Ropa', 'Prendas de ciclismo con diseños inspirados en los caminos y paisajes de Costa Rica.'],
 ];
 
 $products = [
     [
-        'CF4-LAB4-BIKE-01',
-        'Bicicleta MTB doble suspensión (muestra)',
+        'CIC-BIK-001',
+        'Bicicleta MTB de doble suspensión',
         'bicicletas',
-        '<p>Inspirada en las bicicletas de montaña de doble suspensión, esta pieza encabeza la selección de Ciclo Finca. La fotografía es ilustrativa y sirve para dar contexto al catálogo del laboratorio.</p><p>Revisa el precio, las unidades disponibles y el selector de cantidad para seguir el recorrido desde la ficha hasta el carrito. La tienda no ofrece una bicicleta real: talla, componentes, garantía y especificaciones técnicas no están definidos.</p>',
+        '<p>Una bicicleta de montaña de doble suspensión para recorrer senderos, pendientes y caminos irregulares. Su silueta robusta está hecha para quienes buscan una rodada con carácter.</p><p>Consulta el precio y la disponibilidad que aparecen en esta ficha antes de añadirla al carrito.</p>',
         1500000,
         6,
         '/product-assets/bicicleta-mtb-suspension.webp',
-        'Una bicicleta MTB de muestra para explorar la ficha, revisar existencias y probar el checkout.',
+        'Bicicleta de montaña de doble suspensión para explorar nuevos senderos.',
     ],
     [
-        'CF4-LAB4-BIKE-02',
-        'Bicicleta MTB hardtail de muestra',
+        'CIC-BIK-002',
+        'Bicicleta MTB hardtail',
         'bicicletas',
-        '<p>Una bicicleta rígida de montaña para imaginar rutas por caminos compactos y senderos. La imagen y el artículo forman parte del catálogo académico de Ciclo Finca.</p><p>Su ficha permite comparar el precio con otros productos y poner a prueba cantidades e inventario. No representa un modelo disponible para venta y no incluye ficha técnica real de cuadro, componentes o tallas.</p>',
+        '<p>Una bicicleta de montaña de cuadro rígido, con una presencia ligera y decidida. Ideal para quienes disfrutan los caminos compactos, las subidas y las vueltas espontáneas.</p><p>Revisa el precio y la disponibilidad indicada en la ficha para preparar tu pedido.</p>',
         350000,
         8,
         '/product-assets/bicicleta-mtb-hardtail.webp',
-        'Bicicleta de montaña rígida ilustrativa para comparar precios y probar cantidades en el carrito.',
+        'Una bicicleta rígida para caminos de montaña y recorridos cotidianos.',
     ],
     [
-        'CF4-LAB4-BIKE-03',
-        'Bicicleta gravel de demostración',
+        'CIC-BIK-003',
+        'Bicicleta gravel',
         'bicicletas',
-        '<p>Una bicicleta gravel de demostración, pensada para evocar recorridos que combinan carretera secundaria y caminos de lastre. Su imagen ayuda a reconocer rápidamente la categoría de bicicletas.</p><p>Explora el detalle de producto, agrégala al carrito y revisa cómo WooCommerce calcula el total. El precio y las existencias son datos de práctica; no se publican especificaciones, talla ni disponibilidad comercial.</p>',
+        '<p>Una bicicleta gravel para enlazar tramos de asfalto y caminos de lastre en una misma salida. Su diseño invita a tomar el desvío y dejar que el recorrido se alargue.</p><p>Consulta el precio y la disponibilidad indicados antes de añadirla al carrito.</p>',
         425000,
         5,
         '/product-assets/bicicleta-gravel-demo.webp',
-        'Una bicicleta gravel ilustrativa para armar una compra de práctica y comprobar los totales.',
+        'Bicicleta gravel para cambiar de terreno y seguir rodando.',
     ],
     [
-        'CF4-LAB4-SEAT-01',
-        'Asiento MTB DDK R305',
+        'CIC-ACC-001',
+        'Sillín MTB negro y rojo',
         'accesorios',
-        '<p>El nombre DDK R305 aparece como dato de muestra del catálogo. La ilustración presenta un sillín genérico en tonos negro y rojo; no es una fotografía verificada del fabricante ni confirma el diseño exacto del modelo.</p><p>Consulta su precio, cantidad disponible y categoría, y combínalo con una bicicleta de muestra. No se especifican medidas, compatibilidad con cuadros ni condiciones de uso para una compra real.</p>',
+        '<p>Sillín para bicicleta de montaña en una combinación deportiva de negro y rojo. Un detalle llamativo para renovar el aspecto de tu bicicleta.</p><p>Antes de comprar, verifica la compatibilidad con tu bicicleta y consulta la disponibilidad de este artículo.</p>',
         18000,
         12,
         '/product-assets/asiento-mtb-rojo-demo.webp',
-        'Sillín de muestra en tonos negro y rojo para explorar precios y existencias del catálogo.',
+        'Sillín para bicicleta de montaña con detalles en rojo.',
     ],
     [
-        'CF4-LAB4-SEAT-02',
-        'Asiento DDK Snake Ergonomics',
+        'CIC-ACC-002',
+        'Sillín negro y azul',
         'accesorios',
-        '<p>El nombre DDK Snake Ergonomics se conserva como dato de muestra del catálogo. La ilustración muestra un sillín genérico en tonos negro y azul; no es una fotografía verificada del fabricante ni confirma el diseño exacto del modelo.</p><p>Esta ficha pertenece al catálogo demostrativo: las dimensiones, la compatibilidad y cualquier recomendación de ajuste deben confirmarse con el fabricante antes de un uso real.</p>',
+        '<p>Sillín para bicicleta en tonos negro y azul, con una silueta estilizada y un diseño de inspiración deportiva.</p><p>Verifica las medidas y la compatibilidad que requiere tu bicicleta antes de elegirlo.</p>',
         25000,
         10,
         '/product-assets/asiento-ergonomico-azul-demo.webp',
-        'Sillín ilustrativo en tonos negro y azul para completar una compra de accesorios.',
+        'Sillín negro y azul de estilo deportivo para bicicleta.',
     ],
     [
-        'CF4-LAB4-NUTRITION-01',
-        'Bebidas de hidratación deportiva (muestra)',
+        'CIC-NUT-001',
+        'Bebidas para ciclismo',
         'nutricion',
-        '<p>Una selección ilustrativa de bebidas deportivas para representar la categoría de nutrición e hidratación de Ciclo Finca. La imagen de muestra agrupa varios envases de colores distintos.</p><p>Úsala para probar cantidades mayores a uno y revisar el cálculo del pedido. No se detallan marcas, ingredientes ni información nutricional y el producto no está a la venta.</p>',
+        '<p>Una selección de bebidas en envases individuales para llevar en tus recorridos. El formato compacto cabe fácilmente junto con el resto de tu equipo.</p><p>Consulta la etiqueta del producto para revisar ingredientes e indicaciones antes de consumir.</p>',
         20000,
         35,
         '/product-assets/bebidas-hidratacion-demo.webp',
-        'Bebidas deportivas ilustrativas para ensayar cantidades, subtotal y existencias en WooCommerce.',
+        'Bebidas en envases individuales para acompañar tus salidas.',
     ],
     [
-        'CF4-LAB4-ACC-03',
+        'CIC-ACC-003',
         'Casco MTB Trail',
         'accesorios',
-        '<p>Un casco de montaña ilustrativo para representar el equipo de protección dentro del catálogo. Su acabado verde combina con la identidad visual de Ciclo Finca.</p><p>La ficha es exclusivamente académica y no certifica seguridad, ajuste ni protección. Para un uso real se deben revisar la certificación aplicable, la talla y las instrucciones del fabricante.</p>',
+        '<p>Casco de ciclismo de montaña en color verde, con una estética aventurera y líneas marcadas.</p><p>Antes de elegirlo, revisa el ajuste, la talla y las indicaciones del fabricante.</p>',
         42000,
         12,
         '/product-assets/casco-mtb-trail.webp',
-        'Casco de montaña ilustrativo para completar la categoría de accesorios del catálogo.',
+        'Casco MTB verde para completar tu equipo de ruta.',
     ],
     [
-        'CF4-LAB4-ACC-04',
+        'CIC-ACC-004',
         'Guantes MTB Trail',
         'accesorios',
-        '<p>Guantes de demostración para añadir una prenda de protección a la selección de accesorios. La ficha describe un par de guantes y muestra un acabado con palma texturizada.</p><p>Revisa el inventario y combina este producto con una bicicleta o un casco para probar la compra de varios artículos. La imagen es ilustrativa; material, tallas y nivel de protección no están especificados.</p>',
+        '<p>Guantes de ciclismo con palma texturizada y diseño en negro. Un accesorio cómodo de llevar en tus recorridos.</p><p>Consulta la disponibilidad indicada en esta ficha antes de añadir el par a tu pedido.</p>',
         18500,
         20,
         '/product-assets/guantes-mtb-trail.webp',
-        'Par de guantes MTB ilustrativos para añadir variedad a una compra de prueba.',
+        'Guantes de ciclismo negros con palma texturizada.',
     ],
     [
-        'CF4-LAB4-ACC-05',
-        'Botella térmica 650 ml',
+        'CIC-ACC-005',
+        'Botella de ciclismo',
         'accesorios',
-        '<p>Botella de muestra con cuerpo metálico y tapa verde, presentada como complemento para una salida en bicicleta. La capacidad indicada de 650 ml es parte de la descripción ilustrativa del catálogo.</p><p>Añádela a tu carrito para ver cómo se reflejan las cantidades y el subtotal. No se ha verificado el aislamiento térmico ni se ofrece una garantía de uso.</p>',
+        '<p>Botella para bicicleta con acabado metálico y tapa verde. Su forma alargada está pensada para llevarla en tus recorridos.</p><p>Revisa las dimensiones de tu portabotellas para confirmar que se ajuste a tu bicicleta.</p>',
         14000,
         24,
         '/product-assets/botella-termica-650ml.webp',
-        'Botella ilustrativa de 650 ml, con acabado metálico y tapa verde.',
+        'Botella metálica para bicicleta con tapa verde.',
     ],
     [
-        'CF4-LAB4-ACC-06',
+        'CIC-ACC-006',
         'Kit de herramientas para ruta',
         'accesorios',
-        '<p>Un kit compacto de herramientas de muestra que representa los accesorios de mantenimiento para una ruta. La imagen reúne piezas pequeñas en un estuche fácil de identificar en el catálogo.</p><p>La ficha sirve para practicar la selección de accesorios y revisar el total de una combinación. El contenido exacto del kit y su compatibilidad con reparaciones no están especificados.</p>',
+        '<p>Kit compacto de herramientas para llevar en la bicicleta o guardar en casa. Su estuche mantiene las piezas reunidas y listas para acompañarte en el camino.</p><p>Consulta la imagen del producto para revisar el contenido incluido y confirmar que responda a tus necesidades.</p>',
         22500,
         15,
         '/product-assets/kit-herramientas-ruta.webp',
-        'Kit compacto de herramientas ilustrativo para dar variedad a la selección de accesorios.',
+        'Kit compacto de herramientas de ciclismo con estuche.',
     ],
     [
-        'CF4-LAB4-ACC-07',
-        'Luces LED recargables',
+        'CIC-ACC-007',
+        'Luces LED para bicicleta',
         'accesorios',
-        '<p>Juego de luces delantera y trasera de demostración, pensado para representar un accesorio visible en una bicicleta. Su imagen ayuda a distinguir este artículo en la tienda.</p><p>Consulta la disponibilidad y añádelo junto con otros productos de muestra. La ficha no declara potencia luminosa, autonomía, resistencia al agua ni certificación para circular.</p>',
+        '<p>Juego de luces LED delantera y trasera para bicicleta. Su formato compacto permite mantener ambas luces a mano al preparar tu salida.</p><p>Consulta en el empaque del producto las instrucciones de instalación y uso.</p>',
         28000,
         16,
         '/product-assets/luces-led-recargables.webp',
-        'Juego ilustrativo de luces delantera y trasera para completar el catálogo de accesorios.',
+        'Juego de luces LED delantera y trasera para bicicleta.',
     ],
     [
-        'CF4-LAB4-APP-01',
+        'CIC-ROP-001',
         'Jersey de ciclismo verde',
         'ropa',
-        '<p>Jersey de ciclismo de manga corta en color verde, incluido para dar variedad a la categoría de ropa. El diseño gráfico de la imagen es ilustrativo y combina con la paleta de Ciclo Finca.</p><p>Explora la ficha y agrégalo a una compra de prueba. No se ofrece una guía de tallas ni se especifican composición de la tela, ajuste o cuidados.</p>',
+        '<p>Jersey de ciclismo verde de manga corta con un diseño deportivo inspirado en las rutas de montaña.</p><p>Revisa la información de talla y cuidado disponible antes de añadirlo a tu pedido.</p>',
         36000,
         10,
         '/product-assets/jersey-ciclismo-verde.webp',
-        'Jersey verde de manga corta como prenda de muestra para completar el catálogo.',
+        'Jersey de ciclismo verde de manga corta.',
     ],
+];
+
+$legacySkus = [
+    'CIC-BIK-001' => 'CF4-LAB4-BIKE-01',
+    'CIC-BIK-002' => 'CF4-LAB4-BIKE-02',
+    'CIC-BIK-003' => 'CF4-LAB4-BIKE-03',
+    'CIC-ACC-001' => 'CF4-LAB4-SEAT-01',
+    'CIC-ACC-002' => 'CF4-LAB4-SEAT-02',
+    'CIC-ACC-003' => 'CF4-LAB4-ACC-03',
+    'CIC-ACC-004' => 'CF4-LAB4-ACC-04',
+    'CIC-ACC-005' => 'CF4-LAB4-ACC-05',
+    'CIC-ACC-006' => 'CF4-LAB4-ACC-06',
+    'CIC-ACC-007' => 'CF4-LAB4-ACC-07',
+    'CIC-NUT-001' => 'CF4-LAB4-NUTRITION-01',
+    'CIC-ROP-001' => 'CF4-LAB4-APP-01',
 ];
 
 foreach ($products as $productData) {
@@ -188,12 +203,16 @@ if ($uncategorized && (int) $uncategorized->count === 0) {
 
 foreach ($products as [$sku, $name, $categorySlug, $description, $price, $stock, $imagePath, $shortDescription]) {
     $existingId = wc_get_product_id_by_sku($sku);
+    if (! $existingId && isset($legacySkus[$sku])) {
+        $existingId = wc_get_product_id_by_sku($legacySkus[$sku]);
+    }
     if ($existingId) {
         $existing = wc_get_product($existingId);
         if (! $existing) {
             throw new RuntimeException('Could not load existing product with SKU ' . $sku);
         }
 
+        $existing->set_sku($sku);
         $existing->set_name($name);
         $existing->set_status('publish');
         $existing->set_catalog_visibility('visible');
@@ -208,12 +227,23 @@ foreach ($products as [$sku, $name, $categorySlug, $description, $price, $stock,
         }
         $existing->save();
 
+        $productSlug = sanitize_title($name);
+        if (get_post_field('post_name', $existingId) !== $productSlug) {
+            wp_update_post([
+                'ID' => $existingId,
+                'post_name' => $productSlug,
+            ]);
+        }
+
         $existingImageId = $existing->get_image_id();
         $existingAsset = $existingImageId
             ? get_post_meta($existingImageId, '_ciclo_finca_seed_asset', true)
             : '';
         if (! $existingImageId || $existingAsset !== basename($imagePath)) {
             attachProductImage($existing, $name, $imagePath);
+        } else {
+            wp_update_post(['ID' => $existingImageId, 'post_title' => $name]);
+            update_post_meta($existingImageId, '_wp_attachment_image_alt', $name);
         }
 
         WP_CLI::log('Updated product without resetting its stock: ' . $name);
@@ -240,10 +270,10 @@ foreach ($products as [$sku, $name, $categorySlug, $description, $price, $stock,
 }
 
 $categoryThumbnailSkus = [
-    'bicicletas' => 'CF4-LAB4-BIKE-01',
-    'accesorios' => 'CF4-LAB4-ACC-03',
-    'nutricion' => 'CF4-LAB4-NUTRITION-01',
-    'ropa' => 'CF4-LAB4-APP-01',
+    'bicicletas' => 'CIC-BIK-001',
+    'accesorios' => 'CIC-ACC-003',
+    'nutricion' => 'CIC-NUT-001',
+    'ropa' => 'CIC-ROP-001',
 ];
 foreach ($categoryThumbnailSkus as $slug => $sku) {
     $productId = wc_get_product_id_by_sku($sku);
@@ -253,7 +283,7 @@ foreach ($categoryThumbnailSkus as $slug => $sku) {
     }
 }
 
-WP_CLI::success('The twelve-product demonstration catalog is ready.');
+WP_CLI::success('The Ciclo Finca twelve-product catalog is ready.');
 
 function attachProductImage(WC_Product_Simple $product, string $name, string $imagePath): void
 {

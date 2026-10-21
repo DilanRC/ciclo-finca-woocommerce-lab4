@@ -1,17 +1,36 @@
 <!-- wp:group {"align":"full","className":"ciclo-header-wrap","layout":{"type":"default"}} -->
 <div class="wp-block-group alignfull ciclo-header-wrap">
-	<!-- wp:group {"className":"ciclo-header","layout":{"type":"default"}} -->
-	<div class="wp-block-group ciclo-header">
-		<!-- wp:site-title {"level":0} /-->
-		<!-- wp:shortcode -->[ciclo_primary_navigation]<!-- /wp:shortcode -->
-		<!-- wp:shortcode -->[ciclo_header_search]<!-- /wp:shortcode -->
-		<!-- wp:shortcode -->[ciclo_header_actions]<!-- /wp:shortcode -->
-		<!-- wp:html -->
-		<button class="ciclo-menu-toggle" type="button" aria-expanded="false" aria-controls="ciclo-primary-nav">
-			<span class="ciclo-menu-toggle__icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
-			<span>Menú</span>
-		</button>
-		<!-- /wp:html -->
+	<!-- wp:group {"className":"ciclo-header","style":{"dimensions":{"minHeight":"82px"}},"layout":{"type":"default"}} -->
+	<div class="wp-block-group ciclo-header" style="min-height:82px">
+		<!-- wp:group {"className":"ciclo-brand","layout":{"type":"default"}} -->
+		<div class="wp-block-group ciclo-brand">
+			<!-- wp:ciclo-finca/icon {"icon":"bike","size":42,"iconColor":"#d8f05a"} /-->
+			<!-- wp:site-title {"level":0} /-->
+		</div>
+		<!-- /wp:group -->
+
+		<!-- wp:ciclo-finca/navigation {"ariaLabel":"Navegación principal","menuLabel":"Menú","menuIcon":"menu","menuIconSize":20,"itemsId":"ciclo-primary-nav-items"} -->
+			<!-- wp:ciclo-finca/icon-link {"label":"Inicio","url":"/","icon":"home","iconSize":20,"className":"ciclo-nav-link"} /-->
+			<!-- wp:ciclo-finca/icon-link {"label":"Tienda","url":"/shop/","icon":"shop","iconSize":20,"className":"ciclo-nav-link"} /-->
+			<!-- wp:ciclo-finca/icon-link {"label":"Bicicletas","url":"/product-category/bicicletas/","icon":"bike","iconSize":20,"className":"ciclo-nav-link"} /-->
+			<!-- wp:ciclo-finca/icon-link {"label":"Accesorios","url":"/product-category/accesorios/","icon":"gear","iconSize":20,"className":"ciclo-nav-link"} /-->
+		<!-- /wp:ciclo-finca/navigation -->
+
+		<!-- wp:search {"label":"Buscar","showLabel":false,"placeholder":"Buscar productos","buttonText":"Buscar","buttonUseIcon":true,"query":{"post_type":"product"},"namespace":"woocommerce/product-search","className":"ciclo-header-search"} /-->
+
+		<!-- wp:group {"className":"ciclo-header-actions","layout":{"type":"default"}} -->
+		<div class="wp-block-group ciclo-header-actions">
+			<!-- wp:ciclo-finca/icon-link {"label":"Cuenta","url":"/my-account/","icon":"account","iconSize":20,"className":"ciclo-header-account"} /-->
+			<!-- wp:group {"className":"ciclo-header-cart-wrap","layout":{"type":"default"}} -->
+			<div class="wp-block-group ciclo-header-cart-wrap">
+				<!-- wp:woocommerce/mini-cart {"miniCartIcon":"cart","hasHiddenPrice":true,"productCountVisibility":"always"} /-->
+				<!-- wp:paragraph {"className":"ciclo-cart-label"} -->
+				<p class="ciclo-cart-label">Carrito</p>
+				<!-- /wp:paragraph -->
+			</div>
+			<!-- /wp:group -->
+		</div>
+		<!-- /wp:group -->
 	</div>
 	<!-- /wp:group -->
 </div>

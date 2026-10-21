@@ -432,18 +432,21 @@
   }
 
   .ciclo-hero__actions a:hover,
+  .ciclo-hero__actions .wp-block-button__link:hover,
   .ciclo-route-banner a:hover,
   .ciclo-button:hover {
     box-shadow: 0 8px 20px -12px var(--ciclo-forest-deep);
     transform: translateY(-2px);
   }
 
+  .ciclo-hero__actions .wp-block-button:first-child .wp-block-button__link:hover,
   .ciclo-hero__actions a:first-child:hover,
   .ciclo-route-banner a:hover {
     background: var(--ciclo-white);
     color: var(--ciclo-forest-deep);
   }
 
+  .ciclo-hero__actions .wp-block-button:last-child .wp-block-button__link:hover,
   .ciclo-hero__actions a:last-child:hover {
     border-color: var(--ciclo-lime);
     background: color-mix(in srgb, var(--ciclo-lime) 12%, transparent);
@@ -451,6 +454,7 @@
   }
 
   .ciclo-category-list ul.products li.product-category,
+  .ciclo-category-list .wc-block-product-categories-list-item,
   .ciclo-products ul.products li.product,
   .woocommerce ul.products li.product,
   .wc-block-product {
@@ -461,6 +465,7 @@
   }
 
   .ciclo-category-list ul.products li.product-category:hover,
+  .ciclo-category-list .wc-block-product-categories-list-item:hover,
   .ciclo-products ul.products li.product:hover,
   .woocommerce ul.products li.product:hover,
   .wc-block-product:hover {
@@ -473,8 +478,13 @@
     transform: translate(2px, -2px);
   }
 
+  .ciclo-category-list .wc-block-product-categories-list-item:hover .wc-block-product-categories-list-item__name::after {
+    transform: translate(2px, -2px);
+  }
+
   .ciclo-products ul.products li.product:hover a img,
   .woocommerce ul.products li.product:hover a img,
+  .ciclo-category-list .wc-block-product-categories-list-item:hover .wc-block-product-categories-list-item__image img,
   .wc-block-product:hover .wc-block-components-product-image img {
     transform: scale(1.035);
   }

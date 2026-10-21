@@ -1,0 +1,24 @@
+{
+  "apiVersion": 3,
+  "name": "ciclo-finca/icon-link",
+  "title": "Enlace con icono",
+  "category": "design",
+  "icon": "admin-links",
+  "description": "Enlace con texto e icono editables.",
+  "textdomain": "ciclo-finca",
+  "attributes": {
+    "label": { "type": "string", "default": "Enlace" },
+    "url": { "type": "string", "default": "#" },
+    "icon": { "type": "string", "default": "none" },
+    "iconSize": { "type": "number", "default": 20 },
+    "iconColor": { "type": "string", "default": "" },
+    "opensInNewTab": { "type": "boolean", "default": false }
+  },
+  "supports": {
+    "html": false,
+    "color": { "text": true },
+    "spacing": { "margin": true, "padding": true },
+    "dimensions": { "height": true, "width": true, "minHeight": true, "minWidth": true },
+    "typography": { "fontSize": true, "lineHeight": true, "fontWeight": true }
+  }
+}

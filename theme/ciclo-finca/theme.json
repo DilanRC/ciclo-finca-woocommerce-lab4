@@ -2,11 +2,16 @@
   "$schema": "https://schemas.wp.org/wp/6.8/theme.json",
   "version": 3,
   "settings": {
+    "appearanceTools": true,
+    "useRootPaddingAwareAlignments": true,
     "layout": {
       "contentSize": "760px",
       "wideSize": "1440px"
     },
     "color": {
+      "defaultPalette": false,
+      "custom": true,
+      "customGradient": false,
       "palette": [
         { "slug": "forest", "name": "Bosque", "color": "#16352c" },
         { "slug": "forest-deep", "name": "Bosque profundo", "color": "#0e261f" },
@@ -14,22 +19,93 @@
         { "slug": "lime", "name": "Lima", "color": "#d8f05a" },
         { "slug": "route-orange", "name": "Naranja de ruta", "color": "#e65a32" },
         { "slug": "chalk", "name": "Tiza", "color": "#f4f5ef" },
-        { "slug": "ink", "name": "Tinta", "color": "#18231e" }
+        { "slug": "paper", "name": "Papel", "color": "#ffffff" },
+        { "slug": "ink", "name": "Tinta", "color": "#18231e" },
+        { "slug": "muted", "name": "Texto secundario", "color": "#56645c" }
       ]
     },
+    "spacing": {
+      "defaultSpacingSizes": false,
+      "margin": true,
+      "padding": true,
+      "blockGap": true,
+      "units": ["px", "%", "em", "rem", "vw", "vh", "svh", "dvh"]
+    },
+    "dimensions": {
+      "height": true,
+      "minHeight": true,
+      "minWidth": true,
+      "width": true
+    },
     "typography": {
+      "fluid": true,
+      "customFontSize": true,
+      "fontStyle": true,
+      "fontWeight": true,
+      "lineHeight": true,
+      "letterSpacing": true,
+      "textTransform": true,
       "fontFamilies": [
         {
           "fontFamily": "\"DM Sans\", sans-serif",
           "name": "DM Sans",
-          "slug": "dm-sans"
+          "slug": "dm-sans",
+          "fontFace": [
+            {
+              "fontFamily": "DM Sans",
+              "fontStyle": "normal",
+              "fontWeight": "400 700",
+              "src": ["file:./assets/fonts/dm-sans-variable.woff2"]
+            }
+          ]
         },
         {
           "fontFamily": "\"Barlow Condensed\", sans-serif",
           "name": "Barlow Condensed",
-          "slug": "barlow-condensed"
+          "slug": "barlow-condensed",
+          "fontFace": [
+            {
+              "fontFamily": "Barlow Condensed",
+              "fontStyle": "normal",
+              "fontWeight": "700",
+              "src": ["file:./assets/fonts/barlow-condensed-bold.woff2"]
+            }
+          ]
         }
+      ],
+      "fontSizes": [
+        { "slug": "small", "name": "Pequeño", "size": "0.875rem" },
+        { "slug": "medium", "name": "Mediano", "size": "1rem" },
+        { "slug": "large", "name": "Grande", "size": "1.5rem" },
+        { "slug": "x-large", "name": "Extra grande", "size": "2.25rem" },
+        { "slug": "display", "name": "Titular deportivo", "size": "clamp(3rem, 6vw, 6.75rem)" }
       ]
+    },
+    "blocks": {
+      "core/group": {
+        "dimensions": { "height": true, "width": true, "minHeight": true, "minWidth": true },
+        "spacing": { "margin": true, "padding": true, "blockGap": true },
+        "layout": { "allowSizingOnChildren": true }
+      },
+      "core/cover": {
+        "dimensions": { "aspectRatio": true, "height": true, "minHeight": true, "minWidth": true, "width": true },
+        "spacing": { "margin": true, "padding": true, "blockGap": true }
+      },
+      "core/image": {
+        "dimensions": { "aspectRatio": true, "height": true, "minHeight": true, "minWidth": true, "width": true }
+      },
+      "core/heading": {
+        "dimensions": { "height": true, "width": true }
+      },
+      "core/paragraph": {
+        "dimensions": { "height": true, "width": true }
+      },
+      "core/button": {
+        "dimensions": { "height": true, "width": true }
+      },
+      "core/buttons": {
+        "dimensions": { "height": true, "width": true }
+      }
     }
   },
   "styles": {
@@ -38,32 +114,36 @@
       "text": "#18231e"
     },
     "typography": {
-      "fontFamily": "var(--wp--preset--font-family--dm-sans)"
+      "fontFamily": "var(--wp--preset--font-family--dm-sans)",
+      "lineHeight": "1.55"
     },
     "elements": {
       "heading": {
+        "color": { "text": "#16352c" },
         "typography": {
           "fontFamily": "var(--wp--preset--font-family--barlow-condensed)",
-          "fontWeight": "700"
-        },
-        "color": {
-          "text": "#16352c"
-        }
-      },
-      "button": {
-        "border": {
-          "radius": "999px"
-        },
-        "color": {
-          "background": "#16352c",
-          "text": "#ffffff"
+          "fontWeight": "700",
+          "lineHeight": "0.98"
         }
       },
       "link": {
-        "color": {
-          "text": "#285a43"
-        }
+        "color": { "text": "#285a43" }
+      },
+      "button": {
+        "border": { "radius": "0.55rem" },
+        "color": { "background": "#d8f05a", "text": "#0e261f" },
+        "typography": { "fontWeight": "700" }
+      }
+    },
+    "blocks": {
+      "core/button": {
+        "border": { "radius": "0.55rem" },
+        "spacing": { "padding": { "top": "0.9rem", "bottom": "0.9rem", "left": "1.35rem", "right": "1.35rem" } }
       }
     }
-  }
+  },
+  "templateParts": [
+    { "name": "header", "title": "Encabezado", "area": "header" },
+    { "name": "footer", "title": "Pie de página", "area": "footer" }
+  ]
 }

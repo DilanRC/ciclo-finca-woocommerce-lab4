@@ -1,0 +1,41 @@
+{
+  "home": [{ "tag": "path", "attributes": { "d": "m3.5 10.5 8.5-7 8.5 7v9a1 1 0 0 1-1 1h-5v-6h-5v6h-5a1 1 0 0 1-1-1v-9Z" } }],
+  "shop": [{ "tag": "path", "attributes": { "d": "M4 9.5h16v10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-10Zm-1-1 2-5h14l2 5M3 8.5a3 3 0 0 0 6 0 3 3 0 0 0 6 0 3 3 0 0 0 6 0M9 20.5v-6h6v6" } }],
+  "bike": [
+    { "tag": "circle", "attributes": { "cx": "6", "cy": "17", "r": "3.2" } },
+    { "tag": "circle", "attributes": { "cx": "18", "cy": "17", "r": "3.2" } },
+    { "tag": "path", "attributes": { "d": "m6 17 4-7 4 7H6Zm4-7h4l2 7m-6-7-1.5-2H6" } }
+  ],
+  "gear": [
+    { "tag": "path", "attributes": { "d": "M12 3.5 14 5l2.5-.2.8 2.4 2.2 1.2-.7 2.4.7 2.4-2.2 1.2-.8 2.4-2.5-.2-2 1.5-2-1.5-2.5.2-.8-2.4-2.2-1.2.7-2.4-.7-2.4 2.2-1.2.8-2.4L10 5l2-1.5Z" } },
+    { "tag": "circle", "attributes": { "cx": "12", "cy": "11.5", "r": "2.8" } }
+  ],
+  "account": [
+    { "tag": "circle", "attributes": { "cx": "12", "cy": "8", "r": "3.2" } },
+    { "tag": "path", "attributes": { "d": "M5.5 20a6.5 6.5 0 0 1 13 0" } }
+  ],
+  "cart": [
+    { "tag": "path", "attributes": { "d": "M3 4h2.2l2.1 11.1a1.8 1.8 0 0 0 1.8 1.5h8.7a1.8 1.8 0 0 0 1.8-1.5L21 8H6" } },
+    { "tag": "circle", "attributes": { "cx": "9.5", "cy": "20", "r": "1.2" } },
+    { "tag": "circle", "attributes": { "cx": "17.5", "cy": "20", "r": "1.2" } }
+  ],
+  "search": [
+    { "tag": "circle", "attributes": { "cx": "10.8", "cy": "10.8", "r": "6.3" } },
+    { "tag": "path", "attributes": { "d": "m15.5 15.5 4.2 4.2" } }
+  ],
+  "route": [{ "tag": "path", "attributes": { "d": "M5 19c3.2-1.2 2.8-5.8 6-7s2.8-5.8 6-7M5 19h4m-4 0v-4m14-10h-4m4 0v4" } }],
+  "payment": [
+    { "tag": "rect", "attributes": { "x": "3.5", "y": "5.5", "width": "17", "height": "13", "rx": "1.7" } },
+    { "tag": "path", "attributes": { "d": "M3.5 9.5h17M7 14.5h4" } }
+  ],
+  "pin": [
+    { "tag": "path", "attributes": { "d": "M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0Z" } },
+    { "tag": "circle", "attributes": { "cx": "12", "cy": "10", "r": "2.2" } }
+  ],
+  "helmet": [{ "tag": "path", "attributes": { "d": "M4 13a8 8 0 0 1 16 0v2H4v-2Zm0 0H2.5v4H8v-2m12-2h1.5v4H16v-2m-4-9v6m-5-4 2 3m10-3-2 3" } }],
+  "tools": [{ "tag": "path", "attributes": { "d": "m14.5 6.5 3-3a5 5 0 0 0-6.2 6.2L4 17a2.1 2.1 0 1 0 3 3l7.3-7.3a5 5 0 0 0 6.2-6.2l-3 3-3-3Z" } }],
+  "bottle": [{ "tag": "path", "attributes": { "d": "M9 3h6v3l1.5 2V20a1 1 0 0 1-1 1h-7a1 1 0 0 1-1-1V8L9 6V3Zm0 7h6m-5-7h4" } }],
+  "jersey": [{ "tag": "path", "attributes": { "d": "m8 4 4 2 4-2 5 3-2 5-3-1v10H8V11l-3 1-2-5 5-3Zm4 2v4m-4-6L6 7m10-3 2 3" } }],
+  "menu": [{ "tag": "path", "attributes": { "d": "M4 7h16M4 12h16M4 17h16" } }],
+  "close": [{ "tag": "path", "attributes": { "d": "m6 6 12 12M18 6 6 18" } }]
+}

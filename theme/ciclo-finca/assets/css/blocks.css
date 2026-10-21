@@ -1,0 +1,92 @@
+.wp-block-ciclo-finca-icon {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+}
+
+.wp-block-ciclo-finca-icon svg,
+.ciclo-icon-link__icon svg,
+.ciclo-menu-toggle__icon svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.wp-block-ciclo-finca-icon-link {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  gap: 0.48rem;
+  color: inherit;
+  font-weight: 700;
+  text-decoration: none;
+  transition: color 160ms cubic-bezier(0.23, 1, 0.32, 1), background-color 160ms cubic-bezier(0.23, 1, 0.32, 1), transform 130ms ease-out;
+}
+
+.ciclo-icon-link__icon {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+}
+
+.wp-block-ciclo-finca-navigation {
+  display: block;
+  grid-area: nav;
+  width: 100%;
+  min-width: 0;
+}
+
+.ciclo-primary-nav__items {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+}
+
+.ciclo-menu-toggle {
+  display: none;
+  min-height: 48px;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  border: 1px solid color-mix(in srgb, #f7f9f4 33%, transparent);
+  border-radius: 999px;
+  background: transparent;
+  color: #f7f9f4;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.88rem;
+  font-weight: 700;
+  padding: 0.55rem 0.85rem;
+  transition: border-color 160ms cubic-bezier(0.23, 1, 0.32, 1), color 160ms cubic-bezier(0.23, 1, 0.32, 1), transform 130ms ease-out;
+}
+
+.ciclo-menu-toggle__icon {
+  display: inline-flex;
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.ciclo-menu-toggle:active,
+.wp-block-ciclo-finca-icon-link:active {
+  transform: scale(0.98);
+}
+
+.ciclo-block-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.8rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wp-block-ciclo-finca-icon-link,
+  .ciclo-menu-toggle {
+    transition: none;
+  }
+}

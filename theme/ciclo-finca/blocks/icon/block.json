@@ -1,0 +1,20 @@
+{
+  "apiVersion": 3,
+  "name": "ciclo-finca/icon",
+  "title": "Icono Ciclo Finca",
+  "category": "design",
+  "icon": "star-filled",
+  "description": "Icono editable con tamaño y color configurables.",
+  "textdomain": "ciclo-finca",
+  "attributes": {
+    "icon": { "type": "string", "default": "bike" },
+    "size": { "type": "number", "default": 28 },
+    "iconColor": { "type": "string", "default": "#d8f05a" }
+  },
+  "supports": {
+    "html": false,
+    "color": { "text": true },
+    "spacing": { "margin": true, "padding": true },
+    "dimensions": { "height": true, "width": true, "minHeight": true, "minWidth": true }
+  }
+}

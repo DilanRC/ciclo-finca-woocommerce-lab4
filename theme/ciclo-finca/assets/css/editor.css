@@ -1,0 +1,395 @@
+@font-face {
+  font-family: "DM Sans";
+  src: url("../fonts/dm-sans-variable.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Barlow Condensed";
+  src: url("../fonts/barlow-condensed-bold.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+.editor-styles-wrapper {
+  color: #18231e;
+  font-family: "DM Sans", sans-serif;
+  line-height: 1.55;
+}
+
+.editor-styles-wrapper .ciclo-editorial {
+  width: min(850px, calc(100% - clamp(2rem, 8vw, 4rem)));
+  margin-inline: auto;
+  padding-block: clamp(2rem, 5vw, 4rem);
+}
+
+.editor-styles-wrapper .ciclo-editorial h2 {
+  margin-top: 2.4rem;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+}
+
+.editor-styles-wrapper .ciclo-editorial p:not(.ciclo-eyebrow) {
+  color: #56645c;
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.editor-styles-wrapper .ciclo-editorial a {
+  font-weight: 700;
+}
+
+.editor-styles-wrapper .ciclo-header-wrap {
+  width: 100%;
+  background: #16352c;
+  border-bottom: 4px solid #d8f05a;
+  color: #f7f9f4;
+  padding: 0;
+}
+
+.editor-styles-wrapper .ciclo-header {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) minmax(160px, 220px) max-content;
+  grid-template-areas: "brand nav search actions";
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.65rem clamp(1rem, 4vw, 3.5rem);
+}
+
+.editor-styles-wrapper .ciclo-header > * {
+  margin-block: 0 !important;
+}
+
+.editor-styles-wrapper .ciclo-brand {
+  display: flex;
+  grid-area: brand;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.editor-styles-wrapper .ciclo-brand .wp-block-site-title {
+  margin: 0;
+}
+
+.editor-styles-wrapper .ciclo-brand .wp-block-site-title a {
+  color: #f7f9f4;
+  font-family: "DM Sans", sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.editor-styles-wrapper .ciclo-primary-nav {
+  display: block;
+  grid-area: nav;
+}
+
+.editor-styles-wrapper .ciclo-primary-nav__items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+}
+
+.editor-styles-wrapper .ciclo-header .ciclo-nav-link,
+.editor-styles-wrapper .ciclo-header .ciclo-header-account {
+  min-height: 44px;
+  border-radius: 999px;
+  color: #f7f9f4;
+  padding: 0.55rem 0.7rem;
+}
+
+.editor-styles-wrapper .ciclo-header .ciclo-nav-link:hover,
+.editor-styles-wrapper .ciclo-header .ciclo-header-account:hover {
+  background: rgb(247 249 244 / 10%);
+  color: #d8f05a;
+}
+
+.editor-styles-wrapper .ciclo-header-search {
+  grid-area: search;
+}
+
+.editor-styles-wrapper .ciclo-header-search .wp-block-search__inside-wrapper {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  overflow: hidden;
+  border: 1px solid rgb(247 249 244 / 27%);
+  border-radius: 999px;
+  background: rgb(247 249 244 / 9%);
+}
+
+.editor-styles-wrapper .ciclo-header-search .wp-block-search__input {
+  width: 100%;
+  min-width: 0;
+  min-height: 48px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: #f7f9f4;
+  font-size: 0.84rem;
+  padding: 0 0.45rem 0 1rem;
+  box-shadow: none;
+}
+
+.editor-styles-wrapper .ciclo-header-search .wp-block-search__input::placeholder {
+  color: rgb(247 249 244 / 78%);
+}
+
+.editor-styles-wrapper .ciclo-header-search .wp-block-search__button {
+  display: inline-grid;
+  width: 44px;
+  min-width: 44px;
+  height: 44px;
+  flex: 0 0 44px;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: #d8f05a;
+  margin: 2px;
+  padding: 0;
+}
+
+.editor-styles-wrapper .ciclo-header-search .wp-block-search__button svg {
+  display: block;
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+.editor-styles-wrapper .ciclo-header-actions {
+  display: flex;
+  grid-area: actions;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.editor-styles-wrapper .ciclo-header-cart-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: #f7f9f4;
+}
+
+.editor-styles-wrapper .ciclo-menu-toggle {
+  display: none;
+}
+
+.editor-styles-wrapper .ciclo-hero {
+  height: clamp(570px, 58vw, 820px);
+  min-height: 0;
+  align-items: center;
+  overflow: hidden;
+  background: #0e261f;
+  color: #f7f9f4;
+}
+
+.editor-styles-wrapper .ciclo-hero .wp-block-cover__image-background {
+  object-fit: cover;
+  object-position: 68% center;
+}
+
+.editor-styles-wrapper .ciclo-hero .wp-block-cover__background {
+  background: linear-gradient(90deg, rgb(14 38 31 / 96%) 0%, rgb(14 38 31 / 82%) 36%, rgb(14 38 31 / 38%) 65%, rgb(14 38 31 / 8%) 100%);
+  opacity: 1;
+}
+
+.editor-styles-wrapper .ciclo-hero__content {
+  width: min(100%, 1380px);
+  max-width: none;
+  margin-inline: auto;
+  padding: clamp(2rem, 7vw, 6rem);
+}
+
+.editor-styles-wrapper .ciclo-hero .ciclo-eyebrow {
+  color: #d8f05a;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+}
+
+.editor-styles-wrapper .ciclo-hero h1 {
+  max-width: 14ch;
+  color: #fff;
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: clamp(3.4rem, 7vw, 7rem);
+  line-height: 0.9;
+}
+
+.editor-styles-wrapper .ciclo-hero__intro {
+  max-width: 46ch;
+  color: #f7f9f4;
+  font-size: clamp(1rem, 1.45vw, 1.2rem);
+}
+
+.editor-styles-wrapper .ciclo-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-top: 1.5rem;
+}
+
+.editor-styles-wrapper .ciclo-hero__actions .wp-block-button__link {
+  min-height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.editor-styles-wrapper .ciclo-hero__actions .is-style-outline .wp-block-button__link {
+  border: 1px solid rgb(255 255 255 / 56%);
+  background: transparent;
+  color: #fff;
+}
+
+.editor-styles-wrapper .ciclo-trust-strip {
+  display: grid;
+  width: min(100%, 1380px);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0;
+  margin: 0 auto;
+  background: #0e261f;
+  color: #f7f9f4;
+  padding: 1rem clamp(1rem, 4vw, 3.5rem);
+}
+
+.editor-styles-wrapper .ciclo-trust-item {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.8rem 1.2rem;
+}
+
+.editor-styles-wrapper .ciclo-trust-item h3,
+.editor-styles-wrapper .ciclo-trust-item p {
+  margin: 0;
+}
+
+.editor-styles-wrapper .ciclo-trust-item h3 {
+  color: #fff;
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.editor-styles-wrapper .ciclo-trust-item p {
+  color: #d0d8d1;
+  font-size: 0.8rem;
+}
+
+.editor-styles-wrapper .ciclo-category-list,
+.editor-styles-wrapper .ciclo-products,
+.editor-styles-wrapper .ciclo-how,
+.editor-styles-wrapper .ciclo-callout {
+  width: min(100%, 1380px);
+  margin-inline: auto;
+  padding: clamp(2.5rem, 6vw, 5.5rem) clamp(1rem, 4vw, 3.5rem);
+}
+
+.editor-styles-wrapper .ciclo-section__heading h2,
+.editor-styles-wrapper .ciclo-callout h2 {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: clamp(2.2rem, 4vw, 4rem);
+}
+
+.editor-styles-wrapper .ciclo-category-list,
+.editor-styles-wrapper .ciclo-products {
+  background: #f4f5ef;
+}
+
+.editor-styles-wrapper .ciclo-how {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.2rem;
+}
+
+.editor-styles-wrapper .ciclo-how-card {
+  min-height: 230px;
+  border-top: 3px solid #d8f05a;
+  background: #fff;
+  padding: 1.4rem;
+}
+
+.editor-styles-wrapper .ciclo-how-card .ciclo-icon {
+  color: #285a43;
+}
+
+.editor-styles-wrapper .ciclo-callout {
+  margin-bottom: 3rem;
+  background: #16352c;
+  color: #f7f9f4;
+  padding-block: 3rem;
+}
+
+.editor-styles-wrapper .ciclo-callout h2,
+.editor-styles-wrapper .ciclo-callout p {
+  color: inherit;
+}
+
+.editor-styles-wrapper .ciclo-callout .wp-block-button__link {
+  background: #d8f05a;
+  color: #0e261f;
+}
+
+@media (max-width: 86rem) {
+  .editor-styles-wrapper .ciclo-header {
+    grid-template-columns: auto minmax(0, 1fr) max-content;
+    grid-template-areas: "brand toggle actions";
+  }
+
+  .editor-styles-wrapper .ciclo-primary-nav {
+    grid-area: toggle;
+  }
+
+  .editor-styles-wrapper .ciclo-menu-toggle {
+    display: inline-flex;
+    width: max-content;
+  }
+
+  .editor-styles-wrapper .ciclo-primary-nav__items {
+    justify-content: flex-start;
+  }
+
+  .editor-styles-wrapper .ciclo-header-search {
+    display: none;
+  }
+}
+
+@media (max-width: 42rem) {
+  .editor-styles-wrapper .ciclo-header {
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas: "brand actions" "toggle toggle";
+    gap: 0.35rem;
+  }
+
+  .editor-styles-wrapper .ciclo-menu-toggle {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .editor-styles-wrapper .ciclo-primary-nav__items {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .editor-styles-wrapper .ciclo-hero {
+    height: clamp(460px, 112vh, 680px);
+    height: clamp(460px, 112svh, 680px);
+    align-items: flex-end;
+  }
+
+  .editor-styles-wrapper .ciclo-hero .wp-block-cover__image-background {
+    object-position: 74% center;
+  }
+
+  .editor-styles-wrapper .ciclo-trust-strip,
+  .editor-styles-wrapper .ciclo-how {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .editor-styles-wrapper .ciclo-trust-item {
+    padding-inline: 0;
+  }
+}

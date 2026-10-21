@@ -1,0 +1,24 @@
+{
+  "apiVersion": 3,
+  "name": "ciclo-finca/navigation",
+  "title": "Navegación Ciclo Finca",
+  "category": "design",
+  "icon": "menu",
+  "description": "Menú adaptable compuesto por enlaces editables con icono.",
+  "textdomain": "ciclo-finca",
+  "attributes": {
+    "ariaLabel": { "type": "string", "default": "Navegación principal" },
+    "menuLabel": { "type": "string", "default": "Menú" },
+    "menuIcon": { "type": "string", "default": "menu" },
+    "menuIconSize": { "type": "number", "default": 20 },
+    "menuIconColor": { "type": "string", "default": "#f7f9f4" },
+    "itemsId": { "type": "string", "default": "ciclo-primary-nav-items" }
+  },
+  "supports": {
+    "html": false,
+    "spacing": { "margin": true, "padding": true },
+    "dimensions": { "height": true, "minHeight": true, "minWidth": true, "width": true },
+    "align": ["wide", "full"],
+    "allowedBlocks": ["ciclo-finca/icon-link"]
+  }
+}

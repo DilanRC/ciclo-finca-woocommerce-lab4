@@ -1,0 +1,137 @@
+.ciclo-editorial {
+  width: min(850px, calc(100% - 2 * var(--ciclo-gutter)));
+  margin: 0 auto;
+  padding: clamp(2rem, 5vw, 4rem) 0;
+}
+
+.wp-block-post-title {
+  max-width: var(--ciclo-content);
+  margin-inline: auto;
+  padding-inline: var(--ciclo-gutter);
+  color: var(--ciclo-forest);
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: clamp(3rem, 6.5vw, 6rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 0.9;
+}
+
+.ciclo-editorial h1 {
+  margin-bottom: 1rem;
+  font-size: clamp(3.2rem, 7vw, 6.5rem);
+  text-wrap: balance;
+}
+
+.ciclo-editorial h2 {
+  margin-top: 2.4rem;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+}
+
+.ciclo-editorial p,
+.ciclo-editorial li {
+  color: var(--ciclo-muted);
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.ciclo-editorial li + li {
+  margin-top: 0.42rem;
+}
+
+.ciclo-editorial a {
+  font-weight: 700;
+}
+
+.wp-site-blocks > footer {
+  width: 100%;
+  margin-top: clamp(4rem, 8vw, 7rem);
+  border-top: 4px solid var(--ciclo-lime);
+  background: var(--ciclo-forest-deep);
+}
+
+.wp-site-blocks > footer .wp-block-html {
+  width: 100%;
+}
+
+.wp-site-blocks > footer {
+  width: 100%;
+  border-top: 4px solid var(--ciclo-lime);
+  background: var(--ciclo-forest-deep);
+}
+
+.ciclo-footer {
+  width: min(var(--ciclo-content), calc(100% - 2 * var(--ciclo-gutter)));
+  margin-inline: auto;
+  padding: 3.3rem 0 1.25rem;
+  color: var(--ciclo-white);
+}
+
+.ciclo-footer__main {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 3rem;
+  padding-bottom: 2rem;
+}
+
+.ciclo-footer__brand {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  color: var(--ciclo-white);
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.05em;
+  text-decoration: none;
+}
+
+.ciclo-footer__brand .wp-block-site-title {
+  margin: 0;
+}
+
+.ciclo-footer__brand .wp-block-site-title a {
+  color: var(--ciclo-white);
+  text-decoration: none;
+}
+
+.ciclo-footer__main p {
+  max-width: 48ch;
+  margin: 0.6rem 0 0;
+  color: color-mix(in srgb, var(--ciclo-white) 78%, transparent);
+  line-height: 1.65;
+}
+
+.ciclo-footer__main .ciclo-footer__note {
+  max-width: 58ch;
+  font-size: 0.84rem;
+}
+
+.ciclo-footer__links {
+  display: grid;
+  grid-template-columns: repeat(2, max-content);
+  gap: 0.75rem 2.25rem;
+}
+
+.ciclo-footer__links a,
+.ciclo-footer__bottom a {
+  display: inline-flex;
+  min-height: 40px;
+  align-items: center;
+  color: var(--ciclo-white);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.ciclo-footer__bottom p {
+  margin: 0;
+}
+.ciclo-footer__bottom {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  border-top: 1px solid color-mix(in srgb, var(--ciclo-white) 24%, transparent);
+  padding-top: 1rem;
+  color: color-mix(in srgb, var(--ciclo-white) 72%, transparent);
+  font-size: 0.82rem;
+}

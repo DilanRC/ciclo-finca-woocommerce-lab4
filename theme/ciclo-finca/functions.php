@@ -1,14 +1,102 @@
 <?php
 /**
- * Load Ciclo Finca's storefront styles and behavior after Twenty Twenty-Five.
+ * Register the Ciclo Finca block theme, editor controls, and storefront assets.
  */
+add_action('after_setup_theme', static function (): void {
+    add_theme_support('editor-styles');
+    add_editor_style('assets/css/editor.css');
+    add_theme_support('woocommerce');
+    add_theme_support('wc-product-gallery-zoom');
+    add_theme_support('wc-product-gallery-lightbox');
+    add_theme_support('wc-product-gallery-slider');
+});
+
+add_filter('register_block_type_args', static function (array $args, string $blockType): array {
+    if (! in_array($blockType, [
+        'core/group',
+        'core/cover',
+        'core/heading',
+        'core/paragraph',
+        'core/button',
+        'core/buttons',
+        'core/image',
+    ], true)) {
+        return $args;
+    }
+
+    $args['supports']['dimensions'] = array_merge(
+        $args['supports']['dimensions'] ?? [],
+        ['width' => true, 'height' => true]
+    );
+
+    return $args;
+}, 10, 2);
+
+add_action('init', static function (): void {
+    $themeDirectory = get_stylesheet_directory();
+    $themeUri = get_stylesheet_directory_uri();
+    $editorScriptPath = $themeDirectory . '/assets/editor-blocks.js';
+    $editorStylePath = $themeDirectory . '/assets/css/editor.css';
+    $blockStylePath = $themeDirectory . '/assets/css/blocks.css';
+
+    wp_register_script(
+        'ciclo-finca-editor-blocks',
+        $themeUri . '/assets/editor-blocks.js',
+        ['wp-blocks', 'wp-hooks', 'wp-element', 'wp-components', 'wp-block-editor'],
+        is_readable($editorScriptPath) ? (string) filemtime($editorScriptPath) : wp_get_theme()->get('Version'),
+        true
+    );
+    wp_add_inline_script(
+        'wp-blocks',
+        'wp.hooks.addFilter("blocks.registerBlockType", "ciclo-finca/block-dimensions", function (settings, name) {'
+            . 'if (!["core/group", "core/cover", "core/heading", "core/paragraph", "core/button", "core/buttons", "core/image"].includes(name)) { return settings; }'
+            . 'var supports = settings.supports || {};'
+            . 'return { ...settings, supports: { ...supports, dimensions: { ...supports.dimensions, width: true, height: true } } };'
+            . '});',
+        'after'
+    );
+    wp_localize_script('ciclo-finca-editor-blocks', 'cicloFincaIconShapes', cicloFincaIconShapes());
+    wp_register_style(
+        'ciclo-finca-editor-blocks',
+        $themeUri . '/assets/css/editor.css',
+        [],
+        is_readable($editorStylePath) ? (string) filemtime($editorStylePath) : wp_get_theme()->get('Version')
+    );
+    wp_register_style(
+        'ciclo-finca-blocks',
+        $themeUri . '/assets/css/blocks.css',
+        [],
+        is_readable($blockStylePath) ? (string) filemtime($blockStylePath) : wp_get_theme()->get('Version')
+    );
+
+    $renderCallbacks = [
+        'icon' => 'cicloFincaRenderIconBlock',
+        'icon-link' => 'cicloFincaRenderIconLinkBlock',
+        'navigation' => 'cicloFincaRenderNavigationBlock',
+    ];
+    foreach (glob($themeDirectory . '/blocks/*/block.json') ?: [] as $blockMetadata) {
+        $blockSlug = basename(dirname($blockMetadata));
+        $registration = [
+            'editor_script' => 'ciclo-finca-editor-blocks',
+            'editor_style' => 'ciclo-finca-editor-blocks',
+            'style' => 'ciclo-finca-blocks',
+        ];
+        if (isset($renderCallbacks[$blockSlug])) {
+            $registration['render_callback'] = $renderCallbacks[$blockSlug];
+        }
+        register_block_type(dirname($blockMetadata), $registration);
+    }
+});
+
 add_action('wp_enqueue_scripts', static function (): void {
     $themeDirectory = get_stylesheet_directory();
     $themeUri = get_stylesheet_directory_uri();
     $stylesheets = [
         ['ciclo-finca-base', 'assets/css/base.css', []],
-        ['ciclo-finca-storefront', 'assets/css/storefront.css', ['ciclo-finca-base']],
-        ['ciclo-finca-commerce', 'assets/css/commerce.css', ['ciclo-finca-storefront']],
+        ['ciclo-finca-header', 'assets/css/header.css', ['ciclo-finca-base']],
+        ['ciclo-finca-storefront', 'assets/css/storefront.css', ['ciclo-finca-header']],
+        ['ciclo-finca-site', 'assets/css/site.css', ['ciclo-finca-storefront']],
+        ['ciclo-finca-commerce', 'assets/css/commerce.css', ['ciclo-finca-site']],
         ['ciclo-finca-responsive', 'assets/css/responsive.css', ['ciclo-finca-commerce']],
     ];
 
@@ -27,11 +115,6 @@ add_action('wp_enqueue_scripts', static function (): void {
         $scriptVersion,
         ['in_footer' => true]
     );
-    wp_add_inline_script(
-        'ciclo-finca-storefront',
-        'window.cicloFincaCartEndpoint = ' . wp_json_encode(rest_url('wc/store/v1/cart')) . ';',
-        'before'
-    );
 }, 25);
 
 add_action('wp_head', static function (): void {
@@ -46,86 +129,6 @@ add_action('wp_head', static function (): void {
     );
     echo '<script>(function(){try{var root=document.documentElement;root.classList.add("ciclo-fonts-pending");var reveal=function(){root.classList.remove("ciclo-fonts-pending");root.classList.add("ciclo-fonts-ready")};if(!document.fonts){reveal();return}Promise.all([document.fonts.load("700 1em Barlow Condensed"),document.fonts.load("400 1em DM Sans")]).then(reveal,reveal);window.setTimeout(reveal,2500)}catch(error){document.documentElement.classList.remove("ciclo-fonts-pending")}})();</script>' . "\n";
 }, 1);
-
-function cicloFincaIcon(string $name): string
-{
-    $icons = [
-        'home' => '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m3.5 10.5 8.5-7 8.5 7v9a1 1 0 0 1-1 1h-5v-6h-5v6h-5a1 1 0 0 1-1-1v-9Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>',
-        'shop' => '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 9.5h16v10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-10Z" stroke="currentColor" stroke-width="1.8"/><path d="m3 9 2-5h14l2 5M3 9a3 3 0 0 0 6 0 3 3 0 0 0 6 0 3 3 0 0 0 6 0M9 20.5v-6h6v6" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>',
-        'bike' => '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="6" cy="17" r="3.2" stroke="currentColor" stroke-width="1.7"/><circle cx="18" cy="17" r="3.2" stroke="currentColor" stroke-width="1.7"/><path d="m6 17 4-7 4 7H6Zm4-7h4l2 7m-6-7-1.5-2H6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>',
-        'gear' => '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3.5 14 5l2.5-.2.8 2.4 2.2 1.2-.7 2.4.7 2.4-2.2 1.2-.8 2.4L14 16.6l-2 1.5-2-1.5-2.5.2-.8-2.4-2.2-1.2.7-2.4-.7-2.4 2.2-1.2.8-2.4L10 5l2-1.5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="12" cy="11.5" r="2.8" stroke="currentColor" stroke-width="1.6"/></svg>',
-        'account' => '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="8" r="3.2" stroke="currentColor" stroke-width="1.8"/><path d="M5.5 20a6.5 6.5 0 0 1 13 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>',
-        'cart' => '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 4h2.2l2.1 11.1a1.8 1.8 0 0 0 1.8 1.5h8.7a1.8 1.8 0 0 0 1.8-1.5L21 8H6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9.5" cy="20" r="1.2" fill="currentColor"/><circle cx="17.5" cy="20" r="1.2" fill="currentColor"/></svg>',
-        'search' => '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.3" stroke="currentColor" stroke-width="1.8"/><path d="m15.5 15.5 4.2 4.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>',
-        'menu' => '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>',
-    ];
-
-    return $icons[$name] ?? '';
-}
-
-function cicloFincaPrimaryNavigation(): string
-{
-    $bikeUrl = get_term_link('bicicletas', 'product_cat');
-    $accessoryUrl = get_term_link('accesorios', 'product_cat');
-    $productId = get_queried_object_id();
-    $bikeActive = is_product_category('bicicletas') || (is_product() && has_term('bicicletas', 'product_cat', $productId));
-    $accessoryActive = is_product_category('accesorios') || (is_product() && has_term('accesorios', 'product_cat', $productId));
-    $items = [
-        ['Inicio', home_url('/'), 'home', is_front_page()],
-        ['Tienda', wc_get_page_permalink('shop'), 'shop', is_shop()],
-        ['Bicicletas', is_wp_error($bikeUrl) ? home_url('/shop/') : $bikeUrl, 'bike', $bikeActive],
-        ['Accesorios', is_wp_error($accessoryUrl) ? home_url('/shop/') : $accessoryUrl, 'gear', $accessoryActive],
-    ];
-
-    $links = '';
-    foreach ($items as [$label, $url, $icon, $active]) {
-        $current = $active ? ' aria-current="page"' : '';
-        $links .= '<a class="ciclo-nav-link' . ($active ? ' is-current' : '') . '" href="' . esc_url($url) . '"' . $current . '>'
-            . '<span class="ciclo-nav-link__icon">' . cicloFincaIcon($icon) . '</span>'
-            . '<span>' . esc_html($label) . '</span></a>';
-    }
-
-    return '<nav id="ciclo-primary-nav" class="ciclo-primary-nav" aria-label="Navegación principal">' . $links . '</nav>';
-}
-add_shortcode('ciclo_primary_navigation', 'cicloFincaPrimaryNavigation');
-
-function cicloFincaHeaderSearch(): string
-{
-    return '<form class="ciclo-header-search" role="search" method="get" action="' . esc_url(home_url('/')) . '">'
-        . '<label class="screen-reader-text" for="ciclo-header-search-input">Buscar productos</label>'
-        . '<input id="ciclo-header-search-input" type="search" name="s" placeholder="Buscar en la tienda" value="' . esc_attr(get_search_query()) . '">'
-        . '<input type="hidden" name="post_type" value="product">'
-        . '<button type="submit" aria-label="Buscar productos">' . cicloFincaIcon('search') . '</button>'
-        . '</form>';
-}
-add_shortcode('ciclo_header_search', 'cicloFincaHeaderSearch');
-
-function cicloFincaCartLink(): string
-{
-    $count = function_exists('WC') && WC()->cart ? (int) WC()->cart->get_cart_contents_count() : 0;
-    $countLabel = sprintf(_n('%d artículo', '%d artículos', $count, 'ciclo-finca'), $count);
-
-    return '<a class="ciclo-header-cart" href="' . esc_url(wc_get_page_permalink('cart')) . '" aria-label="Carrito: ' . esc_attr($countLabel) . '">'
-        . '<span class="ciclo-header-action__icon">' . cicloFincaIcon('cart') . '</span>'
-        . '<span class="ciclo-header-action__label">Carrito</span>'
-        . '<span class="ciclo-header-cart__count" aria-live="polite" aria-atomic="true">' . esc_html((string) $count) . '</span>'
-        . '</a>';
-}
-
-function cicloFincaHeaderActions(): string
-{
-    $account = '<a class="ciclo-header-account" href="' . esc_url(wc_get_page_permalink('myaccount')) . '">'
-        . '<span class="ciclo-header-action__icon">' . cicloFincaIcon('account') . '</span>'
-        . '<span class="ciclo-header-action__label">Cuenta</span></a>';
-
-    return '<div class="ciclo-header-actions">' . $account . cicloFincaCartLink() . '</div>';
-}
-add_shortcode('ciclo_header_actions', 'cicloFincaHeaderActions');
-
-add_filter('woocommerce_add_to_cart_fragments', static function (array $fragments): array {
-    $fragments['a.ciclo-header-cart'] = cicloFincaCartLink();
-    return $fragments;
-});
 
 add_filter('gettext_woocommerce', static function (string $translation, string $text, string $domain): string {
     $translations = [
@@ -162,6 +165,153 @@ add_filter('ngettext_woocommerce', static function (string $translation, string 
 
     return $translation;
 }, 20, 4);
+
+function cicloFincaRenderIconBlock(array $attributes): string
+{
+    $icon = sanitize_key($attributes['icon'] ?? 'bike');
+    $size = max(16, min(112, (int) ($attributes['size'] ?? 28)));
+    $color = sanitize_hex_color($attributes['iconColor'] ?? '') ?: '#d8f05a';
+    $svg = cicloFincaIconSvg($icon, $size);
+    if ('' === $svg) {
+        return '';
+    }
+
+    $dimensions = $attributes['style']['dimensions'] ?? [];
+    $fallbackDimensions = '';
+    if (empty($dimensions['width'])) {
+        $fallbackDimensions .= sprintf('width:%dpx;', $size);
+    }
+    if (empty($dimensions['height'])) {
+        $fallbackDimensions .= sprintf('height:%dpx;', $size);
+    }
+    $wrapper = get_block_wrapper_attributes([
+        'class' => 'ciclo-icon',
+        'style' => $fallbackDimensions . 'color:' . $color,
+        'aria-hidden' => 'true',
+    ]);
+    return '<span ' . $wrapper . '>' . $svg . '</span>';
+}
+
+function cicloFincaRenderIconLinkBlock(array $attributes): string
+{
+    $label = trim(wp_strip_all_tags((string) ($attributes['label'] ?? 'Enlace')));
+    if ('' === $label) {
+        $label = 'Enlace';
+    }
+    $url = esc_url($attributes['url'] ?? '#');
+    $icon = sanitize_key($attributes['icon'] ?? 'none');
+    $iconSize = max(14, min(64, (int) ($attributes['iconSize'] ?? 20)));
+    $iconColor = sanitize_hex_color($attributes['iconColor'] ?? '') ?: 'currentColor';
+    $iconSvg = cicloFincaIconSvg($icon, $iconSize);
+    $iconMarkup = '';
+    if ('' !== $iconSvg) {
+        $iconMarkup = sprintf(
+            '<span class="ciclo-icon-link__icon" style="width:%1$dpx;height:%1$dpx;color:%2$s">%3$s</span>',
+            $iconSize,
+            esc_attr($iconColor),
+            $iconSvg
+        );
+    }
+    $target = ! empty($attributes['opensInNewTab']) ? ' target="_blank" rel="noopener noreferrer"' : '';
+    $ariaCurrent = cicloFincaIsCurrentUrl($url) ? ' aria-current="page"' : '';
+    $wrapper = get_block_wrapper_attributes(['class' => 'ciclo-icon-link']);
+
+    return sprintf('<a %1$s href="%2$s"%3$s%4$s>%5$s<span>%6$s</span></a>',
+        $wrapper,
+        $url,
+        $target,
+        $ariaCurrent,
+        $iconMarkup,
+        esc_html($label)
+    );
+}
+
+function cicloFincaRenderNavigationBlock(array $attributes, string $content): string
+{
+    $ariaLabel = trim(sanitize_text_field($attributes['ariaLabel'] ?? 'Navegación principal')) ?: 'Navegación principal';
+    $menuLabel = trim(sanitize_text_field($attributes['menuLabel'] ?? 'Menú')) ?: 'Menú';
+    $menuIcon = sanitize_key($attributes['menuIcon'] ?? 'menu');
+    $menuIconSize = max(16, min(40, (int) ($attributes['menuIconSize'] ?? 20)));
+    $menuIconColor = sanitize_hex_color($attributes['menuIconColor'] ?? '') ?: 'currentColor';
+    $itemsId = sanitize_html_class($attributes['itemsId'] ?? 'ciclo-primary-nav-items');
+    $itemsId = '' !== $itemsId ? $itemsId : 'ciclo-primary-nav-items';
+    $buttonIcon = cicloFincaIconSvg($menuIcon, $menuIconSize);
+    $wrapper = get_block_wrapper_attributes(['class' => 'ciclo-primary-nav']);
+
+    return sprintf(
+        '<div %1$s><button class="ciclo-menu-toggle" type="button" aria-expanded="false" aria-controls="%2$s"><span class="ciclo-menu-toggle__icon" style="color:%3$s" aria-hidden="true">%4$s</span><span>%5$s</span></button><nav id="%2$s" class="ciclo-primary-nav__items" aria-label="%6$s">%7$s</nav></div>',
+        $wrapper,
+        esc_attr($itemsId),
+        esc_attr($menuIconColor),
+        $buttonIcon,
+        esc_html($menuLabel),
+        esc_attr($ariaLabel),
+        $content
+    );
+}
+
+function cicloFincaIconSvg(string $icon, int $size): string
+{
+    if ('none' === $icon) {
+        return '';
+    }
+
+    $shapes = cicloFincaIconShapes();
+    $iconShapes = $shapes[$icon] ?? $shapes['route'] ?? [];
+    if (! is_array($iconShapes)) {
+        return '';
+    }
+
+    $size = max(14, min(112, $size));
+    $markup = '';
+    $allowedAttributes = [
+        'path' => ['d'],
+        'circle' => ['cx', 'cy', 'r'],
+        'rect' => ['x', 'y', 'width', 'height', 'rx'],
+    ];
+    foreach ($iconShapes as $shape) {
+        if (! is_array($shape) || ! is_string($shape['tag'] ?? null) || ! isset($allowedAttributes[$shape['tag']]) || ! is_array($shape['attributes'] ?? null)) {
+            continue;
+        }
+        $tag = $shape['tag'];
+        $attributes = '';
+        foreach ($allowedAttributes[$tag] as $name) {
+            if (isset($shape['attributes'][$name]) && is_scalar($shape['attributes'][$name])) {
+                $attributes .= sprintf(' %s="%s"', $name, esc_attr((string) $shape['attributes'][$name]));
+            }
+        }
+        $markup .= '<' . $tag . $attributes . '/>';
+    }
+
+    return sprintf(
+        '<svg viewBox="0 0 24 24" width="%1$d" height="%1$d" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">%2$s</svg>',
+        $size,
+        $markup
+    );
+}
+
+function cicloFincaIconShapes(): array
+{
+    static $shapes;
+    if (isset($shapes)) {
+        return $shapes;
+    }
+
+    $path = get_stylesheet_directory() . '/assets/icons.json';
+    $contents = is_readable($path) ? file_get_contents($path) : false;
+    $decoded = is_string($contents) ? json_decode($contents, true) : null;
+    $shapes = is_array($decoded) ? $decoded : [];
+
+    return $shapes;
+}
+
+function cicloFincaIsCurrentUrl(string $url): bool
+{
+    $targetPath = wp_parse_url($url, PHP_URL_PATH);
+    $requestPath = wp_parse_url(home_url(add_query_arg([], $GLOBALS['wp']->request ?? '')), PHP_URL_PATH);
+    return is_string($targetPath) && is_string($requestPath)
+        && untrailingslashit($targetPath) === untrailingslashit($requestPath);
+}
 
 add_filter('render_block_core/post-terms', static function (string $content, array $block): string {
     $attributes = $block['attrs'] ?? [];

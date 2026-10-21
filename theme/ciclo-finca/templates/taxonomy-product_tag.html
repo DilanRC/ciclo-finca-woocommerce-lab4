@@ -1,0 +1,37 @@
+<!-- wp:template-part {"slug":"header","area":"header","tagName":"header"} /-->
+<!-- wp:group {"tagName":"main","align":"full","className":"ciclo-main ciclo-product-archive","layout":{"type":"default"}} -->
+<main class="wp-block-group alignfull ciclo-main ciclo-product-archive">
+	<!-- wp:woocommerce/store-notices /-->
+	<!-- wp:group {"align":"wide","className":"ciclo-shop-intro","layout":{"type":"default"}} -->
+	<div class="wp-block-group alignwide ciclo-shop-intro">
+		<!-- wp:paragraph {"className":"ciclo-eyebrow"} -->
+		<p class="ciclo-eyebrow">EQUIPO PARA TU PRÓXIMA SALIDA</p>
+		<!-- /wp:paragraph -->
+		<!-- wp:query-title {"type":"archive","showPrefix":false,"level":1} /-->
+		<!-- wp:term-description /-->
+	</div>
+	<!-- /wp:group -->
+	<!-- wp:group {"align":"wide","className":"ciclo-product-toolbar","layout":{"type":"default"}} -->
+	<div class="wp-block-group alignwide ciclo-product-toolbar">
+		<!-- wp:woocommerce/product-results-count /-->
+		<!-- wp:woocommerce/catalog-sorting /-->
+	</div>
+	<!-- /wp:group -->
+	<!-- wp:woocommerce/product-collection {"align":"wide","queryId":0,"query":{"perPage":12,"pages":0,"offset":0,"postType":"product","order":"desc","orderBy":"menu_order","search":"","exclude":[],"inherit":true,"taxQuery":{},"isProductCollectionBlock":true,"featured":false,"woocommerceOnSale":false,"woocommerceStockStatus":["instock","onbackorder"],"woocommerceAttributes":[],"woocommerceHandPickedProducts":[],"filterable":false,"relatedBy":{"categories":true,"tags":true}},"tagName":"div","displayLayout":{"type":"flex","columns":4,"shrinkColumns":false},"dimensions":{"widthType":"fill"},"collection":"woocommerce/product-collection/product-catalog","hideControls":["inherit"],"queryContextIncludes":["collection"]} -->
+	<div class="wp-block-woocommerce-product-collection alignwide">
+		<!-- wp:woocommerce/product-template -->
+			<!-- wp:woocommerce/product-image {"showSaleBadge":true,"isDescendentOfQueryLoop":true} /-->
+			<!-- wp:post-title {"level":3,"isLink":true,"fontSize":"large","__woocommerceNamespace":"woocommerce/product-collection/product-title"} /-->
+			<!-- wp:woocommerce/product-price {"isDescendentOfQueryLoop":true} /-->
+			<!-- wp:woocommerce/product-button {"isDescendentOfQueryLoop":true} /-->
+		<!-- /wp:woocommerce/product-template -->
+		<!-- wp:woocommerce/product-collection-no-results -->
+			<!-- wp:paragraph -->
+			<p>No hay productos disponibles en esta etiqueta.</p>
+			<!-- /wp:paragraph -->
+		<!-- /wp:woocommerce/product-collection-no-results -->
+	</div>
+	<!-- /wp:woocommerce/product-collection -->
+</main>
+<!-- /wp:group -->
+<!-- wp:template-part {"slug":"footer","area":"footer","tagName":"footer"} /-->

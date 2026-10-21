@@ -53,13 +53,13 @@ Docker Compose usa el nombre de la carpeta como nombre del proyecto para mantene
 ## Edición desde WordPress
 
 - En **Páginas > Inicio**, edite la portada con bloques. El bloque Portada permite cambiar imagen, textos, botones, ancho, altura, espaciado y colores. Categorías, productos, pasos y enlaces también son bloques que puede mover, quitar o reemplazar.
-- Para editar la cabecera y el pie, abra **Páginas > Inicio > Editar**. En el panel de la página, abra **Plantilla > Mostrar plantilla**. Seleccione **Encabezado** o **Pie de página** en la vista de lista, pulse **Editar original** y cambie sus bloques. Edite el texto de los enlaces directamente en el lienzo; en sus ajustes puede cambiar la dirección, el icono, el tamaño y el color. La navegación también permite cambiar su etiqueta accesible y el botón móvil.
+- Para editar la cabecera y el pie, abra **Páginas > Inicio > Editar** y despliegue el panel **Diseño global** en los ajustes de la página. Sus enlaces abren directamente las partes de plantilla. También puede abrir **Plantilla > Mostrar plantilla**, seleccionar **Encabezado** o **Pie de página** en la vista de lista y pulsar **Editar original**. Edite el texto de los enlaces directamente en el lienzo; en sus ajustes puede cambiar la dirección, el icono, el tamaño y el color. La navegación también permite cambiar su etiqueta accesible y el botón móvil.
 - Para cambiar el icono de marca, selecciónelo y use **Ajustes del icono**. Para ajustar el ancho, la altura, los márgenes, el relleno o el color de Portada, Grupo, Título, Párrafo, Botón, Imagen, Icono, Enlace con icono y Navegación, abra **Estilos > Dimensiones** o los paneles de color y tipografía del bloque. La opción de ancho completo se controla con la alineación **Ancho completo**.
 - En **Apariencia > Editor > Estilos**, cambie la paleta y la tipografía global.
 - Las páginas **Nuestra historia**, **Cómo comprar**, **Preguntas frecuentes** y **Privacidad** también usan bloques nativos de párrafo, título y enlace.
 - Las páginas **Carrito** y **Finalizar compra** usan los bloques oficiales de WooCommerce. **Mi cuenta** combina títulos y texto editables con el formulario dinámico de la tienda en un bloque propio.
-- **Tienda** es el catálogo de productos de WooCommerce: su encabezado, filtros y productos se editan como bloques en **Apariencia > Editor > Plantillas > Catálogo de productos**. El contenido de la página asignada como tienda no controla ese archivo.
-- El instalador crea la portada una sola vez y conserva su contenido cuando se vuelve a ejecutar. Las páginas informativas antiguas se convierten solo cuando aún coinciden exactamente con el contenido original; los cambios del administrador se respetan. El encabezado y el pie son partes de plantilla del tema y se editan desde la vista de plantilla de la página de inicio.
+- En **Páginas > Tienda**, edite el catálogo con bloques. La plantilla de WooCommerce muestra ese contenido y mantiene el encabezado y el pie globales. Puede cambiar el texto, el ordenamiento, las columnas y cada bloque de tarjeta de producto desde el editor de la página.
+- El instalador crea la portada una sola vez y conserva su contenido cuando se vuelve a ejecutar. Las páginas informativas antiguas se convierten solo cuando aún coinciden exactamente con el contenido original; los cambios del administrador se respetan. El encabezado y el pie son partes de plantilla globales; se editan desde el panel **Diseño global** del editor de páginas o desde **Apariencia > Editor**.
 
 Si la configuración de WordPress todavía no terminó, espere a que cargue el instalador antes de ejecutar los comandos WP-CLI. El contenedor CLI utiliza el mismo volumen que el servidor web, pero no instala WordPress por sí solo.
 
@@ -88,7 +88,7 @@ Los artículos y existencias corresponden a esta instalación local. Las doce im
 
 La semilla valida primero las doce imágenes. Si se vuelve a ejecutar, actualiza los productos que ya tengan esos SKU y repara imágenes cuando cambian los assets, sin restablecer existencias administradas ni duplicar productos o categorías.
 
-La portada incluye accesos a las cuatro categorías, ocho productos destacados con descripciones cortas, información sobre precios en CRC, pago manual y recogida local, y una guía de compra. El catálogo completo tiene enlaces por categoría y tarjetas con descripciones breves; cada producto incluye una descripción más completa en su ficha. También hay páginas de información de la tienda, preguntas frecuentes y privacidad. El carrito y el checkout muestran el flujo en español. El instalador elimina el contenido de ejemplo “Hello world!” y “Sample Page”.
+La portada incluye accesos a las cuatro categorías, ocho productos destacados con descripciones cortas, información sobre precios en CRC, pago manual y recogida local, y una guía de compra. El catálogo completo se guarda en la página Tienda como bloques WooCommerce; sus tarjetas muestran imagen, nombre, precio y botón de compra, y cada producto incluye una descripción más completa en su ficha. También hay páginas de información de la tienda, preguntas frecuentes y privacidad. El carrito y el checkout muestran el flujo en español. El instalador elimina el contenido de ejemplo “Hello world!” y “Sample Page”.
 
 ## Configuración de pago, moneda y entrega
 
@@ -120,6 +120,7 @@ La grabación queda pendiente mientras se termina de pulir la tienda. Cuando est
 
 - Validar la configuración de Docker: docker compose config
 - Ver los servicios: docker compose ps
+- Comprobar los títulos y productos de Tienda y Bicicletas: `python3 scripts/verify-storefront.py` (opcionalmente, indique la URL base local como argumento).
 - Revisar el catálogo: en Productos > Todos los productos del panel de WordPress.
 - Consultar los registros del servidor: docker compose logs -f wordpress
 

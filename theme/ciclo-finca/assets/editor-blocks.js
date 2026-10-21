@@ -244,4 +244,31 @@
     },
     save: () => el(InnerBlocks.Content),
   });
+
+  registerBlockType('ciclo-finca/shop-content', {
+    edit: () => el(
+      'div',
+      useBlockProps({ className: 'ciclo-shop-content-placeholder' }),
+      el('strong', null, 'Catálogo de productos'),
+      el('p', null, 'El contenido del catálogo se edita en Páginas → Tienda.'),
+    ),
+    save: () => null,
+  });
+
+  if (wp.plugins && wp.editPost && wp.editPost.PluginDocumentSettingPanel) {
+    wp.plugins.registerPlugin('ciclo-finca-global-template-links', {
+      render: () => {
+        const links = window.cicloFincaTemplateEditorLinks || {};
+        if (!links.header || !links.footer) return null;
+
+        return el(
+          wp.editPost.PluginDocumentSettingPanel,
+          { name: 'ciclo-finca-global-template-links', title: 'Diseño global' },
+          el('p', null, 'Estos bloques se comparten en todo el sitio.'),
+          el('a', { className: 'ciclo-template-editor-link', href: links.header, target: '_blank', rel: 'noopener noreferrer' }, 'Editar encabezado'),
+          el('a', { className: 'ciclo-template-editor-link', href: links.footer, target: '_blank', rel: 'noopener noreferrer' }, 'Editar pie de página'),
+        );
+      },
+    });
+  }
 })();

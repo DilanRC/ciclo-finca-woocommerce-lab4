@@ -42,7 +42,7 @@ add_action('init', static function (): void {
     wp_register_script(
         'ciclo-finca-editor-blocks',
         $themeUri . '/assets/editor-blocks.js',
-        ['wp-blocks', 'wp-hooks', 'wp-element', 'wp-components', 'wp-block-editor'],
+        ['wp-blocks', 'wp-hooks', 'wp-element', 'wp-components', 'wp-block-editor', 'wp-plugins', 'wp-edit-post'],
         is_readable($editorScriptPath) ? (string) filemtime($editorScriptPath) : wp_get_theme()->get('Version'),
         true
     );
@@ -56,6 +56,19 @@ add_action('init', static function (): void {
         'after'
     );
     wp_localize_script('ciclo-finca-editor-blocks', 'cicloFincaIconShapes', cicloFincaIconShapes());
+    $templateEditorLinks = [];
+    if (is_admin() && current_user_can('edit_theme_options')) {
+        foreach (['header' => 'wp_template_part', 'footer' => 'wp_template_part'] as $slug => $postType) {
+            $template = get_block_template(get_stylesheet() . '//' . $slug, $postType);
+            if ($template) {
+                $templateEditorLinks[$slug] = add_query_arg(
+                    ['p' => '/' . $postType . '/' . $template->id, 'canvas' => 'edit'],
+                    admin_url('site-editor.php')
+                );
+            }
+        }
+    }
+    wp_localize_script('ciclo-finca-editor-blocks', 'cicloFincaTemplateEditorLinks', $templateEditorLinks);
     wp_register_style(
         'ciclo-finca-editor-blocks',
         $themeUri . '/assets/css/editor.css',
@@ -74,6 +87,7 @@ add_action('init', static function (): void {
         'icon-link' => 'cicloFincaRenderIconLinkBlock',
         'navigation' => 'cicloFincaRenderNavigationBlock',
         'account' => 'cicloFincaRenderAccountBlock',
+        'shop-content' => 'cicloFincaRenderShopContentBlock',
     ];
     foreach (glob($themeDirectory . '/blocks/*/block.json') ?: [] as $blockMetadata) {
         $blockSlug = basename(dirname($blockMetadata));
@@ -87,6 +101,11 @@ add_action('init', static function (): void {
         }
         register_block_type(dirname($blockMetadata), $registration);
     }
+});
+
+add_action('enqueue_block_editor_assets', static function (): void {
+    wp_enqueue_script('ciclo-finca-editor-blocks');
+    wp_enqueue_style('ciclo-finca-editor-blocks');
 });
 
 add_action('wp_enqueue_scripts', static function (): void {
@@ -262,6 +281,28 @@ function cicloFincaRenderAccountBlock(array $attributes, string $content): strin
         $content,
         $accountContent
     );
+}
+
+function cicloFincaRenderShopContentBlock(array $attributes, string $content, WP_Block $block): string
+{
+    static $renderDepth = 0;
+
+    if ($renderDepth > 0 || ! function_exists('wc_get_page_id') || ! function_exists('is_shop') || ! is_shop()) {
+        return '';
+    }
+
+    $shopPageId = wc_get_page_id('shop');
+    $shopPage = $shopPageId > 0 ? get_post($shopPageId) : null;
+    if (! $shopPage || 'publish' !== $shopPage->post_status || '' === trim($shopPage->post_content)) {
+        return '';
+    }
+
+    ++$renderDepth;
+    try {
+        return apply_filters('the_content', $shopPage->post_content);
+    } finally {
+        --$renderDepth;
+    }
 }
 
 function cicloFincaIconSvg(string $icon, int $size): string

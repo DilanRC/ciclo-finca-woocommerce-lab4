@@ -54,12 +54,33 @@ $accountPageContent = '<!-- wp:ciclo-finca/account -->'
     . '<!-- wp:heading {"level":2} --><h2 class="wp-block-heading">Mi cuenta</h2><!-- /wp:heading -->'
     . '<!-- wp:paragraph --><p>Accede para revisar tus pedidos y actualizar tus datos de cliente.</p><!-- /wp:paragraph -->'
     . '<!-- /wp:ciclo-finca/account -->';
+$shopPageContent = '<!-- wp:woocommerce/store-notices /-->'
+    . '<!-- wp:group {"align":"wide","className":"ciclo-shop-intro","layout":{"type":"default"}} -->'
+    . '<div class="wp-block-group alignwide ciclo-shop-intro">'
+    . '<!-- wp:paragraph {"className":"ciclo-eyebrow"} --><p class="ciclo-eyebrow">EQUIPO PARA TU PRÓXIMA SALIDA</p><!-- /wp:paragraph -->'
+    . '<!-- wp:heading {"level":1} --><h1 class="wp-block-heading">Encuentra tu próxima ruta</h1><!-- /wp:heading -->'
+    . '<!-- wp:paragraph --><p>Explora bicicletas y esenciales para encontrar lo que mejor se adapta a tu manera de rodar.</p><!-- /wp:paragraph -->'
+    . '</div><!-- /wp:group -->'
+    . '<!-- wp:group {"align":"wide","className":"ciclo-product-toolbar","layout":{"type":"default"}} -->'
+    . '<div class="wp-block-group alignwide ciclo-product-toolbar"><!-- wp:woocommerce/product-results-count /--><!-- wp:woocommerce/catalog-sorting /--></div><!-- /wp:group -->'
+    . '<!-- wp:woocommerce/product-collection {"align":"wide","queryId":0,"query":{"perPage":12,"pages":0,"offset":0,"postType":"product","order":"desc","orderBy":"menu_order","search":"","exclude":[],"inherit":true,"taxQuery":{},"isProductCollectionBlock":true,"featured":false,"woocommerceOnSale":false,"woocommerceStockStatus":["instock","onbackorder"],"woocommerceAttributes":[],"woocommerceHandPickedProducts":[],"filterable":false,"relatedBy":{"categories":true,"tags":true}},"tagName":"div","displayLayout":{"type":"flex","columns":4,"shrinkColumns":false},"dimensions":{"widthType":"fill"},"collection":"woocommerce/product-collection/product-catalog","hideControls":["inherit"],"queryContextIncludes":["collection"]} -->'
+    . '<div class="wp-block-woocommerce-product-collection alignwide">'
+    . '<!-- wp:woocommerce/product-template -->'
+    . '<!-- wp:woocommerce/product-image {"showSaleBadge":true,"isDescendentOfQueryLoop":true} /-->'
+    . '<!-- wp:post-title {"level":3,"isLink":true,"fontSize":"large","__woocommerceNamespace":"woocommerce/product-collection/product-title"} /-->'
+    . '<!-- wp:woocommerce/product-price {"isDescendentOfQueryLoop":true} /-->'
+    . '<!-- wp:woocommerce/product-button {"isDescendentOfQueryLoop":true} /-->'
+    . '<!-- /wp:woocommerce/product-template -->'
+    . '<!-- wp:woocommerce/product-collection-no-results --><!-- wp:paragraph --><p>No hay productos disponibles en esta categoría.</p><!-- /wp:paragraph --><!-- /wp:woocommerce/product-collection-no-results -->'
+    . '</div><!-- /wp:woocommerce/product-collection -->';
 $systemPageBlockContent = [
+    'shop' => $shopPageContent,
     'cart' => '<!-- wp:woocommerce/cart --><div class="wp-block-woocommerce-cart"></div><!-- /wp:woocommerce/cart -->',
     'checkout' => '<!-- wp:woocommerce/checkout --><div class="wp-block-woocommerce-checkout wc-block-checkout is-loading"></div><!-- /wp:woocommerce/checkout -->',
     'myaccount' => $accountPageContent,
 ];
 $legacySystemPageContent = [
+    'shop' => [],
     'cart' => [
         '[woocommerce_cart]',
         '<!-- wp:shortcode -->[woocommerce_cart]<!-- /wp:shortcode -->',

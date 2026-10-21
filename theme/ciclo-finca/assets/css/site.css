@@ -42,6 +42,10 @@
   font-weight: 700;
 }
 
+.ciclo-account-block__form {
+  margin-block-start: clamp(2rem, 5vw, 3.5rem);
+}
+
 .wp-site-blocks > footer {
   width: 100%;
   margin-top: clamp(4rem, 8vw, 7rem);

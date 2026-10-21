@@ -223,4 +223,25 @@
     },
     save: () => el(InnerBlocks.Content),
   });
+
+  registerBlockType('ciclo-finca/account', {
+    edit: () => {
+      const blockProps = useBlockProps({ className: 'ciclo-account-block' });
+      const template = [
+        ['core/heading', { level: 2, placeholder: 'Mi cuenta' }],
+        ['core/paragraph', { placeholder: 'Escribe una introducción breve para tus clientes.' }],
+      ];
+
+      return el(
+        'section',
+        blockProps,
+        el(InnerBlocks, { template, templateLock: false }),
+        el('div', { className: 'ciclo-account-block__preview' },
+          el('strong', null, 'Cuenta de cliente'),
+          el('p', null, 'El formulario, los pedidos y los datos de cuenta se muestran aquí desde WooCommerce.'),
+        ),
+      );
+    },
+    save: () => el(InnerBlocks.Content),
+  });
 })();

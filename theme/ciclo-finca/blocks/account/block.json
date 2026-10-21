@@ -1,0 +1,15 @@
+{
+  "apiVersion": 3,
+  "name": "ciclo-finca/account",
+  "title": "Cuenta de cliente",
+  "category": "widgets",
+  "icon": "admin-users",
+  "description": "Contenido editable junto al formulario de cuenta de WooCommerce.",
+  "textdomain": "ciclo-finca",
+  "supports": {
+    "html": false,
+    "align": ["wide", "full"],
+    "spacing": { "margin": true, "padding": true },
+    "dimensions": { "width": true, "height": true }
+  }
+}

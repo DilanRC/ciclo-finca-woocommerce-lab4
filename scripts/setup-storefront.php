@@ -50,9 +50,27 @@ $systemPageTitles = [
     'checkout' => 'Finalizar compra',
     'myaccount' => 'Mi cuenta',
 ];
-$systemPageContent = [
-    'cart' => '[woocommerce_cart]',
-    'checkout' => '[woocommerce_checkout]',
+$accountPageContent = '<!-- wp:ciclo-finca/account -->'
+    . '<!-- wp:heading {"level":2} --><h2 class="wp-block-heading">Mi cuenta</h2><!-- /wp:heading -->'
+    . '<!-- wp:paragraph --><p>Accede para revisar tus pedidos y actualizar tus datos de cliente.</p><!-- /wp:paragraph -->'
+    . '<!-- /wp:ciclo-finca/account -->';
+$systemPageBlockContent = [
+    'cart' => '<!-- wp:woocommerce/cart --><div class="wp-block-woocommerce-cart"></div><!-- /wp:woocommerce/cart -->',
+    'checkout' => '<!-- wp:woocommerce/checkout --><div class="wp-block-woocommerce-checkout wc-block-checkout is-loading"></div><!-- /wp:woocommerce/checkout -->',
+    'myaccount' => $accountPageContent,
+];
+$legacySystemPageContent = [
+    'cart' => [
+        '[woocommerce_cart]',
+        '<!-- wp:shortcode -->[woocommerce_cart]<!-- /wp:shortcode -->',
+        '<!-- wp:woocommerce/cart /-->',
+    ],
+    'checkout' => [
+        '[woocommerce_checkout]',
+        '<!-- wp:shortcode -->[woocommerce_checkout]<!-- /wp:shortcode -->',
+        '<!-- wp:woocommerce/checkout /-->',
+    ],
+    'myaccount' => ['<!-- wp:shortcode -->[woocommerce_my_account]<!-- /wp:shortcode -->'],
 ];
 foreach ($systemPageTitles as $pageKey => $title) {
     $pageId = wc_get_page_id($pageKey);
@@ -64,10 +82,12 @@ foreach ($systemPageTitles as $pageKey => $title) {
                 'post_title' => $title,
             ]);
         }
-        if ($systemPage && isset($systemPageContent[$pageKey]) && '' === trim($systemPage->post_content)) {
+        $currentContent = $systemPage ? trim($systemPage->post_content) : '';
+        if ($systemPage && isset($systemPageBlockContent[$pageKey])
+            && ('' === $currentContent || in_array($currentContent, $legacySystemPageContent[$pageKey], true))) {
             wp_update_post([
                 'ID' => $pageId,
-                'post_content' => $systemPageContent[$pageKey],
+                'post_content' => $systemPageBlockContent[$pageKey],
             ]);
         }
     }

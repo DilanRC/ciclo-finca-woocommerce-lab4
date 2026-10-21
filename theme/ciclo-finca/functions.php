@@ -73,6 +73,7 @@ add_action('init', static function (): void {
         'icon' => 'cicloFincaRenderIconBlock',
         'icon-link' => 'cicloFincaRenderIconLinkBlock',
         'navigation' => 'cicloFincaRenderNavigationBlock',
+        'account' => 'cicloFincaRenderAccountBlock',
     ];
     foreach (glob($themeDirectory . '/blocks/*/block.json') ?: [] as $blockMetadata) {
         $blockSlug = basename(dirname($blockMetadata));
@@ -247,6 +248,19 @@ function cicloFincaRenderNavigationBlock(array $attributes, string $content): st
         esc_html($menuLabel),
         esc_attr($ariaLabel),
         $content
+    );
+}
+
+function cicloFincaRenderAccountBlock(array $attributes, string $content): string
+{
+    $wrapper = get_block_wrapper_attributes(['class' => 'ciclo-editorial ciclo-account-block']);
+    $accountContent = do_shortcode('[woocommerce_my_account]');
+
+    return sprintf(
+        '<section %1$s>%2$s<div class="ciclo-account-block__form">%3$s</div></section>',
+        $wrapper,
+        $content,
+        $accountContent
     );
 }
 

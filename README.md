@@ -57,6 +57,8 @@ Docker Compose usa el nombre de la carpeta como nombre del proyecto para mantene
 - Para cambiar el icono de marca, selecciónelo y use **Ajustes del icono**. Para ajustar el ancho, la altura, los márgenes, el relleno o el color de Portada, Grupo, Título, Párrafo, Botón, Imagen, Icono, Enlace con icono y Navegación, abra **Estilos > Dimensiones** o los paneles de color y tipografía del bloque. La opción de ancho completo se controla con la alineación **Ancho completo**.
 - En **Apariencia > Editor > Estilos**, cambie la paleta y la tipografía global.
 - Las páginas **Nuestra historia**, **Cómo comprar**, **Preguntas frecuentes** y **Privacidad** también usan bloques nativos de párrafo, título y enlace.
+- Las páginas **Carrito** y **Finalizar compra** usan los bloques oficiales de WooCommerce. **Mi cuenta** combina títulos y texto editables con el formulario dinámico de la tienda en un bloque propio.
+- **Tienda** es el catálogo de productos de WooCommerce: su encabezado, filtros y productos se editan como bloques en **Apariencia > Editor > Plantillas > Catálogo de productos**. El contenido de la página asignada como tienda no controla ese archivo.
 - El instalador crea la portada una sola vez y conserva su contenido cuando se vuelve a ejecutar. Las páginas informativas antiguas se convierten solo cuando aún coinciden exactamente con el contenido original; los cambios del administrador se respetan. El encabezado y el pie son partes de plantilla del tema y se editan desde la vista de plantilla de la página de inicio.
 
 Si la configuración de WordPress todavía no terminó, espere a que cargue el instalador antes de ejecutar los comandos WP-CLI. El contenedor CLI utiliza el mismo volumen que el servidor web, pero no instala WordPress por sí solo.

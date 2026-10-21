@@ -41,6 +41,20 @@
   font-weight: 700;
 }
 
+.editor-styles-wrapper .ciclo-account-block__preview {
+  max-width: 36rem;
+  border: 1px dashed #8d9b92;
+  border-radius: 0.75rem;
+  background: #f7f9f4;
+  color: #34473c;
+  margin-block: 2rem;
+  padding: 1.5rem;
+}
+
+.editor-styles-wrapper .ciclo-account-block__preview p {
+  margin-block: 0.5rem 0;
+}
+
 .editor-styles-wrapper .ciclo-header-wrap {
   width: 100%;
   background: #16352c;

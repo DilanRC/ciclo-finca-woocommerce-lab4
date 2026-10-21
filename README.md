@@ -2,7 +2,7 @@
 
 Proyecto independiente para el Laboratorio 4 de EIF4280 — Fundamentos de programación web. La tienda usa WordPress y WooCommerce en Docker Compose, Costa Rica como país, colones como moneda, pago manual de simulación y recogida local gratuita.
 
-Este repositorio tiene historial Git propio. Contiene la configuración Docker, un tema hijo ligero para WordPress, guías, scripts WP-CLI y assets ilustrativos. No incluye Laravel, React, archivos .env, datos personales, bases de datos, ramas ni historial del repositorio privado original.
+El repositorio contiene la configuración Docker, un tema hijo ligero para WordPress, guías, scripts WP-CLI y assets propios de Ciclo Finca.
 
 La configuración usa WordPress 7.1.3 con PHP 8.3, MariaDB 11.4 y WooCommerce 11.2.1.
 
@@ -60,24 +60,24 @@ El script crea cuatro categorías y doce productos simples. Cada ficha queda pub
 
 | Categoría | Producto | Precio | Stock inicial |
 | --- | --- | ---: | ---: |
-| Bicicletas | Bicicleta MTB doble suspensión (muestra) | ₡1.500.000 | 6 |
-| Bicicletas | Bicicleta MTB hardtail de muestra | ₡350.000 | 8 |
-| Bicicletas | Bicicleta gravel de demostración | ₡425.000 | 5 |
-| Accesorios | Asiento MTB DDK R305 | ₡18.000 | 12 |
-| Accesorios | Asiento DDK Snake Ergonomics | ₡25.000 | 10 |
-| Nutrición | Bebidas de hidratación deportiva (muestra) | ₡20.000 | 35 |
+| Bicicletas | Bicicleta MTB de doble suspensión | ₡1.500.000 | 6 |
+| Bicicletas | Bicicleta MTB hardtail | ₡350.000 | 8 |
+| Bicicletas | Bicicleta gravel | ₡425.000 | 5 |
+| Accesorios | Sillín MTB negro y rojo | ₡18.000 | 12 |
+| Accesorios | Sillín negro y azul | ₡25.000 | 10 |
+| Nutrición | Bebidas para ciclismo | ₡20.000 | 35 |
 | Accesorios | Casco MTB Trail | ₡42.000 | 12 |
 | Accesorios | Guantes MTB Trail | ₡18.500 | 20 |
-| Accesorios | Botella térmica 650 ml | ₡14.000 | 24 |
+| Accesorios | Botella de ciclismo | ₡14.000 | 24 |
 | Accesorios | Kit de herramientas para ruta | ₡22.500 | 15 |
-| Accesorios | Luces LED recargables | ₡28.000 | 16 |
+| Accesorios | Luces LED para bicicleta | ₡28.000 | 16 |
 | Ropa | Jersey de ciclismo verde | ₡36.000 | 10 |
 
-Todos los artículos y existencias se usan solo para la práctica. No hay ventas ni inventario real. Las doce imágenes de producto y la portada se generaron para este proyecto; los nombres y las descripciones toman como referencia el catálogo de demostración privado, pero sus fotografías no se distribuyen aquí. El detalle está en `ASSETS.md`.
+Los artículos y existencias corresponden a esta instalación local. Las doce imágenes de producto y la portada se generaron para el proyecto; los nombres y las descripciones se adaptaron a la tienda Ciclo Finca. El detalle está en `ASSETS.md`.
 
 La semilla valida primero las doce imágenes. Si se vuelve a ejecutar, actualiza los productos que ya tengan esos SKU y repara imágenes cuando cambian los assets, sin restablecer existencias administradas ni duplicar productos o categorías.
 
-La portada incluye accesos a las cuatro categorías, ocho productos destacados con descripciones cortas, información sobre precios en CRC, pago simulado y recogida local, y una guía de compra. El catálogo completo tiene enlaces por categoría y tarjetas con descripciones breves; cada producto incluye una descripción más completa en su ficha. También hay páginas sobre el proyecto, preguntas frecuentes y privacidad. El carrito y el checkout muestran el flujo en español. El instalador elimina el contenido de ejemplo “Hello world!” y “Sample Page”.
+La portada incluye accesos a las cuatro categorías, ocho productos destacados con descripciones cortas, información sobre precios en CRC, pago manual y recogida local, y una guía de compra. El catálogo completo tiene enlaces por categoría y tarjetas con descripciones breves; cada producto incluye una descripción más completa en su ficha. También hay páginas de información de la tienda, preguntas frecuentes y privacidad. El carrito y el checkout muestran el flujo en español. El instalador elimina el contenido de ejemplo “Hello world!” y “Sample Page”.
 
 ## Configuración de pago, moneda y entrega
 
@@ -91,9 +91,9 @@ Desde la tienda pública, abra productos, añádalos al carrito, cambie cantidad
 
 | Pedido | Productos y cantidades | Total esperado | Estado de práctica |
 | --- | --- | ---: | --- |
-| 1 | Bicicleta MTB doble suspensión × 1; Asiento MTB DDK R305 × 2 | ₡1.536.000 | En espera |
-| 2 | Bicicleta MTB hardtail × 2; Bebidas de hidratación deportiva × 3 | ₡760.000 | Procesando |
-| 3 | Bicicleta gravel × 1; Asiento DDK Snake Ergonomics × 2 | ₡475.000 | Completado |
+| 1 | Bicicleta MTB de doble suspensión × 1; Sillín MTB negro y rojo × 2 | ₡1.536.000 | En espera |
+| 2 | Bicicleta MTB hardtail × 2; Bebidas para ciclismo × 3 | ₡760.000 | Procesando |
+| 3 | Bicicleta gravel × 1; Sillín negro y azul × 2 | ₡475.000 | Completado |
 
 Use nombres como Cliente de Prueba 1, correos cliente1@example.test, cliente2@example.test y cliente3@example.test, y una dirección claramente ficticia. No escriba información real de estudiantes ni datos financieros.
 

@@ -1,0 +1,53 @@
+{
+  "$schema": "https://schemas.wp.org/wp/6.8/theme.json",
+  "version": 3,
+  "settings": {
+    "layout": {
+      "contentSize": "760px",
+      "wideSize": "1200px"
+    },
+    "color": {
+      "palette": [
+        { "slug": "forest", "name": "Bosque", "color": "#183b31" },
+        { "slug": "leaf", "name": "Hoja", "color": "#426f50" },
+        { "slug": "lime", "name": "Lima suave", "color": "#d8e77d" },
+        { "slug": "cream", "name": "Crema", "color": "#f7f7f2" },
+        { "slug": "ink", "name": "Tinta", "color": "#202c25" }
+      ]
+    },
+    "typography": {
+      "fontFamilies": [
+        {
+          "fontFamily": "\"Avenir Next\", Avenir, \"Segoe UI\", sans-serif",
+          "name": "Ciclo Finca Sans",
+          "slug": "ciclo-sans"
+        }
+      ]
+    }
+  },
+  "styles": {
+    "color": {
+      "background": "#f7f7f2",
+      "text": "#202c25"
+    },
+    "typography": {
+      "fontFamily": "var(--wp--preset--font-family--ciclo-sans)"
+    },
+    "elements": {
+      "button": {
+        "border": {
+          "radius": "999px"
+        },
+        "color": {
+          "background": "#183b31",
+          "text": "#ffffff"
+        }
+      },
+      "link": {
+        "color": {
+          "text": "#426f50"
+        }
+      }
+    }
+  }
+}
